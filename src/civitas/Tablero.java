@@ -101,6 +101,8 @@ public class Tablero {
     void añadeJuez () {
         if (!tieneJuez)
             añadeCasilla (new Casilla ("Juez",numCasillaCarcel));
+        
+        tieneJuez = true;
     }
 
     //--------------------------------------

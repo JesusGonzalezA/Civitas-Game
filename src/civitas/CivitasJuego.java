@@ -213,9 +213,8 @@ public class CivitasJuego {
     
     private void inicializaTablero (MazoSorpresas mazo){
         
-        final int INDICECASILLACARCEL = 1;
-        
         //Creo el tablero
+        final int INDICECASILLACARCEL= 1;
         tablero = new Tablero(INDICECASILLACARCEL);
         
         

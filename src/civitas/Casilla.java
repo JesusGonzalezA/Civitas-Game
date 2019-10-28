@@ -21,7 +21,7 @@ public class Casilla {
     private float importe;
     
     //Atributos de clase
-    private static int carcel;
+    private static int carcel = -1;
 
     //-------------------------------------------------------------
     //Métodos
@@ -89,7 +89,11 @@ public class Casilla {
         importe = 0;
 
         //Atributos de clase
-        
+        /*
+        Quito la cárcel porque es static y podría modificar el valor
+        que quiero que reciba si no declaro la casilla que recibe la cárcel
+        como la última
+        */
     }
     
     public Boolean jugadorCorrecto (int actual, ArrayList<Jugador> todos){
