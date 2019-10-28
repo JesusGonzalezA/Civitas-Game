@@ -494,7 +494,21 @@ public class Jugador implements Comparable<Jugador>{
     
     
     Boolean vender(int ip){
-       throw new UnsupportedOperationException("No implementado");
+       Boolean completado = false;
+       
+       if (!encarcelado && existeLaPropiedad(ip)){
+           completado = propiedades.get(ip).vender(this);
+       }
+       
+       if (completado)
+       {
+           String e = "La propiedad " + propiedades.get(ip).getNombre()
+                      + " ha sido vendida por el jugador " + nombre;
+           propiedades.remove(ip);
+           Diario.getInstance().OcurreEvento(e);
+       }
+       
+       return completado;
     }
     
     //-------------------------------------------------------------
@@ -509,25 +523,25 @@ public class Jugador implements Comparable<Jugador>{
                 50.0f,100.0f,2000.0f,4000.0f,1000.0f);
         
         //Pruebo constructor
-        System.out.println("*Probando constructor...");
-        
-        System.out.println(j1.toString());
-        System.out.println(j2.toString());
+//        System.out.println("*Probando constructor...");
+//        
+//        System.out.println(j1.toString());
+//        System.out.println(j2.toString());
         
         
         //Get
-        System.out.println("*Probando métodos get...");
-        System.out.println(j1.getCasasMax());
-        System.out.println(j1.getCasasPorHotel());
-        System.out.println(j1.getHotelesMax());
-        System.out.println(j1.getNombre());
-        System.out.println(j1.getNumCasillaActual());
-        System.out.println(j1.getPrecioLibertad());
-        System.out.println(j1.getPremioPasoPorSalida());
-        System.out.println(j1.getPropiedades());
-        System.out.println(j1.getPuedeComprar());
-        System.out.println(j1.getSaldo());
-        
+//        System.out.println("*Probando métodos get...");
+//        System.out.println(j1.getCasasMax());
+//        System.out.println(j1.getCasasPorHotel());
+//        System.out.println(j1.getHotelesMax());
+//        System.out.println(j1.getNombre());
+//        System.out.println(j1.getNumCasillaActual());
+//        System.out.println(j1.getPrecioLibertad());
+//        System.out.println(j1.getPremioPasoPorSalida());
+//        System.out.println(j1.getPropiedades());
+//        System.out.println(j1.getPuedeComprar());
+//        System.out.println(j1.getSaldo());
+//        
         //______________________________________________________________________
                        //Cambios de estado para probar métodos
         //______________________________________________________________________
@@ -539,71 +553,78 @@ public class Jugador implements Comparable<Jugador>{
         //-puedoEdificarHotel()
         //-tieneAlgoQueGestionar()
             
-            //Añado el titulo y actualizo el propietario
-        j1.propiedades.add(Titulo1);
-        Titulo1.actualizaPropietarioPorConversion(j1);
+//            //Añado el titulo y actualizo el propietario
+//        j1.propiedades.add(Titulo1);
+//        Titulo1.actualizaPropietarioPorConversion(j1);
             //Actualizo propiedades
-        Titulo1.construirCasa(j1);
-        Titulo1.construirCasa(j1);
-        Titulo1.construirCasa(j1);
-        Titulo1.construirCasa(j1);
+//        Titulo1.construirCasa(j1);
+//        Titulo1.construirCasa(j1);
+//        Titulo1.construirCasa(j1);
+//        Titulo1.construirCasa(j1);
         
         //Cambio saldo de j2 para probar:
         //-compareTo()
-        j2.saldo = -j1.saldo;
-        
-        //Pruebo a encarcelarlo y darle salvoconducto
-        //-DebeSerEncarcelado()
-        //j1.encarcelado = true;
-        MazoSorpresas mazo1 = new MazoSorpresas();
-        //Boolean obtenido = j1.obtenerSalvoconducto(new Sorpresa(TipoSorpresa.SALIRCARCEL, mazo1));
-        
-
-        //Cambio saldo de j1 a negativo y 0 para probar:
-        //-enBancarrota()
-        j1.saldo = 0;
-        
-        //Pruebo a encarcelarlo
-        //-encarcelar()
-        //-isEncarcelado() si comento método encarcelar()
-        //-puedoGastar()
-        //-recibir()
-        //-salirCarcelPagando()
-        j1.encarcelado = false;
+//        j2.saldo = -j1.saldo;
+//        
+//        //Pruebo a encarcelarlo y darle salvoconducto
+//        //-DebeSerEncarcelado()
+//        //j1.encarcelado = true;
+//        MazoSorpresas mazo1 = new MazoSorpresas();
+//        //Boolean obtenido = j1.obtenerSalvoconducto(new Sorpresa(TipoSorpresa.SALIRCARCEL, mazo1));
+//        
+//
+//        //Cambio saldo de j1 a negativo y 0 para probar:
+//        //-enBancarrota()
+//        j1.saldo = 0;
+//        
+//        //Pruebo a encarcelarlo
+//        //-encarcelar()
+//        //-isEncarcelado() si comento método encarcelar()
+//        //-puedoGastar()
+//        //-recibir()
+//        //-salirCarcelPagando()
+//        j1.encarcelado = false;
       
         ////////////////////////////////////////////////////////////////////////
         
         //Otros métodos
-        System.out.println("\n*Probando el resto de métodos....\n");
-        System.out.println("*Cantidad casas y hoteles: " + j1.cantidadCasasHoteles());
-        System.out.println("*j1.compareTo(j2) : " + j1.compareTo(j2));
-        System.out.println("*Debe ser encarcelado: " + j1.debeSerEncarcelado());
-        System.out.println("*En bancarrota: " + j1.enBancarrota());
-        //System.out.println("*Encarcelar(99): " + j1.encarcelar(99));    
-        System.out.println("*Existe la propiedad(0): " + j1.existeLaPropiedad(0));
-        System.out.println("*Esta encarcelado: " + j1.isEncarcelado());
-        System.out.println("*Modificar saldo + " + SaldoInicial + " : " + j1.modificarSaldo(SaldoInicial));
-        System.out.println("*Mover a casilla 6: " + j1.moverACasilla(6));
-        System.out.println("*Obtener salvoconducto: " + j1.obtenerSalvoconducto(new Sorpresa(TipoSorpresa.SALIRCARCEL, mazo1)));
-        System.out.println("    numCasillaActual-->"+j1.getNumCasillaActual());
-        System.out.println("*Puede comprar casilla: " + j1.puedeComprarCasilla());
-        System.out.println("*Puedo salir de la carcel pagando: " + j1.puedeSalirCarcelPagando());
-        System.out.println("*Puedo edificar casa: " + j1.puedoEdificarCasa(Titulo1));
-        System.out.println("*Puedo edificar hotel: " + j1.puedoEdificarHotel(Titulo1));
-        System.out.println("*Puedo gastar " + j1.saldo + " : " + j1.puedoGastar(j1.saldo));
-        System.out.println("*Recibe " + SaldoInicial + " : " + j1.recibe(SaldoInicial));
-        System.out.println("*Salir carcel pagando: " + j1.salirCarcelPagando());
-        System.out.println("*Salir carcel tirando: " + j1.salirCarcelTirando());
-        System.out.println("*Tiene algo que gestionar: " + j1.tieneAlgoQueGestionar());
-        System.out.println("*Paga alquiler: " + j1.pagaAlquiler(SaldoInicial));
-        System.out.println("*Paga impuesto: " + j1.pagaImpuesto(SaldoInicial));
-        System.out.println("*Pasa salida: " + j1.pasaPorSalida());
-        System.out.println("*Paga: " + j1.paga(SaldoInicial));
-        System.out.println("*Existe la propiedad: " + j1.existeLaPropiedad(1));
+//        System.out.println("\n*Probando el resto de métodos....\n");
+//        System.out.println("*Cantidad casas y hoteles: " + j1.cantidadCasasHoteles());
+//        System.out.println("*j1.compareTo(j2) : " + j1.compareTo(j2));
+//        System.out.println("*Debe ser encarcelado: " + j1.debeSerEncarcelado());
+//        System.out.println("*En bancarrota: " + j1.enBancarrota());
+//        //System.out.println("*Encarcelar(99): " + j1.encarcelar(99));    
+//        System.out.println("*Existe la propiedad(0): " + j1.existeLaPropiedad(0));
+//        System.out.println("*Esta encarcelado: " + j1.isEncarcelado());
+//        System.out.println("*Modificar saldo + " + SaldoInicial + " : " + j1.modificarSaldo(SaldoInicial));
+//        System.out.println("*Mover a casilla 6: " + j1.moverACasilla(6));
+//        System.out.println("*Obtener salvoconducto: " + j1.obtenerSalvoconducto(new Sorpresa(TipoSorpresa.SALIRCARCEL, mazo1)));
+//        System.out.println("    numCasillaActual-->"+j1.getNumCasillaActual());
+//        System.out.println("*Puede comprar casilla: " + j1.puedeComprarCasilla());
+//        System.out.println("*Puedo salir de la carcel pagando: " + j1.puedeSalirCarcelPagando());
+//        System.out.println("*Puedo edificar casa: " + j1.puedoEdificarCasa(Titulo1));
+//        System.out.println("*Puedo edificar hotel: " + j1.puedoEdificarHotel(Titulo1));
+//        System.out.println("*Puedo gastar " + j1.saldo + " : " + j1.puedoGastar(j1.saldo));
+//        System.out.println("*Recibe " + SaldoInicial + " : " + j1.recibe(SaldoInicial));
+//        System.out.println("*Salir carcel pagando: " + j1.salirCarcelPagando());
+//        System.out.println("*Salir carcel tirando: " + j1.salirCarcelTirando());
+//        System.out.println("*Tiene algo que gestionar: " + j1.tieneAlgoQueGestionar());
+//        System.out.println("*Paga alquiler: " + j1.pagaAlquiler(SaldoInicial));
+//        System.out.println("*Paga impuesto: " + j1.pagaImpuesto(SaldoInicial));
+//        System.out.println("*Pasa salida: " + j1.pasaPorSalida());
+//        System.out.println("*Paga: " + j1.paga(SaldoInicial));
+//        System.out.println("*Existe la propiedad: " + j1.existeLaPropiedad(1));
 //        System.out.println("*Vender: " + j1.vender(1));
+//        
+//        System.out.println("*Tiene salvoconducto: " + j1.tieneSalvoconducto());
+//        System.out.println(j1);
         
-        System.out.println("*Tiene salvoconducto: " + j1.tieneSalvoconducto());
-        System.out.println(j1);
+        //Pruebo método vender
+        Jugador jesus = new Jugador ("jesus");
+        jesus.puedeComprar = true;
+        System.out.println(jesus.comprar(Titulo1));
+        
+        jesus.vender(0);
         
         //Leer diario
         System.out.println("Leyendo el diario...");

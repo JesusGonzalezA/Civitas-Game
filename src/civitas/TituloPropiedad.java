@@ -230,12 +230,19 @@ public class TituloPropiedad {
        
         Boolean operacion_completada = false;
         
-        if (tienePropietario() && !esEsteElPropietario(jugador)){
+        if (!hipotecado && 
+                esEsteElPropietario(jugador)){
+            
+            //Recibo la venta
             propietario.recibe(getPrecioVenta());
-            jugador.paga(getPrecioVenta());
-            actualizaPropietarioPorConversion(jugador);
+            
+            //Desvinculo la propiedad del jugador
+            propietario = null;
+            
+            //Reinicio el titulo
             numCasas = 0;
             numHoteles = 0;
+            
             operacion_completada = true;
         }
         
