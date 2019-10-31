@@ -93,7 +93,7 @@ public class Sorpresa {
             informe(actual,todos);
             
             //Modifico el saldo del jugador en funcion del numero de propiedades
-            Jugador j = new Jugador (todos.get(actual));
+            Jugador j = todos.get(actual);
             j.modificarSaldo(j.cantidadCasasHoteles()*valor);
         }
     }
