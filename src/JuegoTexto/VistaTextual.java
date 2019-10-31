@@ -33,7 +33,7 @@ class VistaTextual {
   }
               
   void pausa() {
-    System.out.print ("Pulsa una tecla ");
+    mostrarEstado ("Pulsa una tecla ");
     in.nextLine();
   }
 
@@ -42,7 +42,7 @@ class VistaTextual {
     String cadena;
     int numero = -1;
     do {
-      System.out.print (msg1);
+      mostrarEstado (msg1);
       cadena = in.nextLine();
       try {  
         numero = Integer.parseInt(cadena);
