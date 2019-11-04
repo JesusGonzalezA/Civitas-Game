@@ -103,9 +103,9 @@ public class Jugador implements Comparable<Jugador>{
         
         Boolean result = false;
         Boolean puedoEdificarCasa = false;
+        TituloPropiedad propiedad = propiedades.get(ip);
         
         if (!encarcelado && existeLaPropiedad(ip)){
-            TituloPropiedad propiedad = propiedades.get(ip);
             puedoEdificarCasa = puedoEdificarCasa(propiedad);
             float precio = propiedad.getPrecioEdificar();
             
@@ -116,7 +116,7 @@ public class Jugador implements Comparable<Jugador>{
         if (result)
         {
             String evento = "El jugador " + nombre + " construye casa en la "
-                    +  "propiedad " + ip;
+                    +  "propiedad " + ip + ", " + propiedad.getNombre();
             Diario.getInstance().OcurreEvento(evento);
         }
         

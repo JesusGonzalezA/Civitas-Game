@@ -18,7 +18,7 @@ public class Controlador {
         this.juego = juego;
         this.vista = vista;
     }
-    
+       
     void juega(){
         
         //Mostrar el estado del juego actualizado

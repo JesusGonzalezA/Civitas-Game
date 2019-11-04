@@ -9,10 +9,8 @@ import civitas.CivitasJuego;
 import civitas.Dado;
 //import JuegoTexto.VistaTextual
 //import JuegoTexto.Controlador
-
-
-
 import java.util.ArrayList;
+
 public class ProgramaPrincipal {
     
     
