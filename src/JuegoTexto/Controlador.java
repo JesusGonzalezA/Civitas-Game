@@ -117,7 +117,7 @@ public class Controlador {
         }//while(continuar) --> jugando
         
         //Termino de jugar, mostrar el ranking
-//        //vista.mostrarEventos();
+        vista.actualizarVista();
         
         
     }

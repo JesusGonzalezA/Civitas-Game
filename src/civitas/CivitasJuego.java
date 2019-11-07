@@ -218,14 +218,14 @@ public class CivitasJuego {
         tablero = new Tablero(INDICECASILLACARCEL);
         
         
-//        //Añado casillas
-        tablero.añadeCasilla(new Casilla(mazo,"Caja de Comunidad"));
-        tablero.añadeCasilla(new Casilla("Descanso"));
-        tablero.añadeCasilla(new Casilla(new TituloPropiedad("Murcia",
-                                        25.0f,50.0f,1000.0f,2000.0f,500.0f)));
-        tablero.añadeCasilla(new Casilla("Impuesto por ser tan guapo", 1500.0f));
-        tablero.añadeCasilla(new Casilla(new TituloPropiedad("Paseo del Prado",
-                                        50.0f,100.0f,2000.0f,4000.0f,1000.0f)));
+////        //Añado casillas
+//        tablero.añadeCasilla(new Casilla(mazo,"Caja de Comunidad"));
+//        tablero.añadeCasilla(new Casilla("Descanso"));
+//        tablero.añadeCasilla(new Casilla(new TituloPropiedad("Murcia",
+//                                        25.0f,50.0f,1000.0f,2000.0f,500.0f)));
+        tablero.añadeCasilla(new Casilla("Impuesto por ser tan guapo", 8500.0f));
+//        tablero.añadeCasilla(new Casilla(new TituloPropiedad("Paseo del Prado",
+//                                        50.0f,100.0f,2000.0f,4000.0f,1000.0f)));
         tablero.añadeJuez();
     }
     

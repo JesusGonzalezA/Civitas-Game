@@ -20,9 +20,9 @@ public class ProgramaPrincipal {
         ArrayList<String> nombresJugadores = new ArrayList<>();
         nombresJugadores.add("Jesus");
         nombresJugadores.add("Nuria");
-        nombresJugadores.add("Jose");
-        nombresJugadores.add("Julio");
-        nombresJugadores.add("Javilonguis");
+//        nombresJugadores.add("Jose");
+//        nombresJugadores.add("Julio");
+//        nombresJugadores.add("Javilonguis");
         
         //Creo juego en modo debug
         CivitasJuego juego = new CivitasJuego(nombresJugadores);
