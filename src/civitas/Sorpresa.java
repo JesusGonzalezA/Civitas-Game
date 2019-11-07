@@ -145,8 +145,8 @@ public class Sorpresa {
     }
     
     private void informe (int actual, ArrayList<Jugador> todos){
-        String evento = "Se esta aplicando la sorpresa " + "'"+this.toString()
-                    + "'"+ " al jugador " + todos.get(actual).getNombre();
+        String evento = "Se esta aplicando la sorpresa [" +this.toString()
+                    + "] al jugador " + todos.get(actual).getNombre();
         Diario.getInstance().OcurreEvento(evento);
     }
     
