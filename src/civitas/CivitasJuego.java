@@ -208,7 +208,7 @@ public class CivitasJuego {
         mazo.alMazo(new Sorpresa(TipoSorpresa.IRCARCEL, tablero));
         mazo.alMazo(new Sorpresa(TipoSorpresa.PORCASAHOTEL,tablero, -50,"Paga por propiedades"));
         mazo.alMazo(new Sorpresa(TipoSorpresa.PAGARCOBRAR,tablero, -50,"Paga"));
-        mazo.alMazo(new Sorpresa(TipoSorpresa.PORJUGADOR,tablero, 50,"Paga a todos/Cobra 1"));
+        mazo.alMazo(new Sorpresa(TipoSorpresa.PORJUGADOR,tablero, 50,"Recibe 50 de cada jugador"));
     }
     
     private void inicializaTablero (MazoSorpresas mazo){
