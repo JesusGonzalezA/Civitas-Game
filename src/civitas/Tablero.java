@@ -100,7 +100,7 @@ public class Tablero {
     
     void añadeJuez () {
         if (!tieneJuez)
-            añadeCasilla (new Casilla ("Juez",numCasillaCarcel));
+            añadeCasilla (new CasillaJuez ("Juez",numCasillaCarcel));
         
         tieneJuez = true;
     }

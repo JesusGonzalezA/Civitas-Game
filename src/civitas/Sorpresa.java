@@ -217,7 +217,7 @@ public class Sorpresa {
             //Creo Casilla
         TituloPropiedad TituloPaseoDelPrado = new TituloPropiedad("Paseo del Prado",
                 50.0f,100.0f,2000.0f,4000.0f,1000.0f);
-        Casilla PaseoDelPrado = new Casilla (TituloPaseoDelPrado);
+        Casilla PaseoDelPrado = new CasillaCalle (TituloPaseoDelPrado);
             
             //Creo tablero correcto
         Tablero tablero = new Tablero (1);

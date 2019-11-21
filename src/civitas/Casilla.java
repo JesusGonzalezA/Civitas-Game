@@ -10,63 +10,22 @@ import java.util.ArrayList;
 public class Casilla {
 
     //-------------------------------------------------------------
-    //Atributos de referencia
-    TipoCasilla tipo;
-    TituloPropiedad tituloPropiedad;
-    Sorpresa sorpresa;
-    MazoSorpresas mazo;
-    
-    //Atributos de instancia
+    //Atributos
     private String nombre;
-    private float importe;
-    
-    //Atributos de clase
-    private static int carcel = -1;
-
     //-------------------------------------------------------------
     //Métodos
     
     Casilla (String nombre){
-        init();
-        this.nombre = nombre;
-        tipo = TipoCasilla.DESCANSO;
-    }
-    
-    Casilla (TituloPropiedad titulo){
-        init();
-        tituloPropiedad = titulo;
-        tipo = TipoCasilla.CALLE;
-        nombre = titulo.getNombre();
-    }
-    
-    Casilla (String nombre , float cantidad){
-        init();
-        tipo = TipoCasilla.IMPUESTO;
-        importe = cantidad;
         this.nombre = nombre;
     }
     
-    Casilla (String nombre, int numCasillaCarcel){
-        init();
-        tipo = TipoCasilla.JUEZ;
-        this.nombre = nombre;
-        carcel = numCasillaCarcel;
-    }
-    
-    Casilla (MazoSorpresas mazo, String nombre ) {
-        init();
-        tipo = TipoCasilla.SORPRESA;
-        this.mazo = mazo;
-        this.nombre = nombre;
-    }
+    //-----------------------------
     
     public String getNombre(){
         return nombre;
     }
     
-    TituloPropiedad getTituloPropiedad (){
-        return tituloPropiedad;
-    }
+    //-----------------------------
     
     private void informe (int actual, ArrayList<Jugador> todos){
         
@@ -77,103 +36,20 @@ public class Casilla {
         Diario.getInstance().OcurreEvento(evento);
     }
     
-    private void init(){
-        //Atributos de referencia
-        tipo = null;
-        tituloPropiedad = null;
-        sorpresa= null;
-        mazo= null;
-
-        //Atributos de instancia
-        nombre = "";
-        importe = 0;
-
-        //Atributos de clase
-        /*
-        Quito la cárcel porque es static y podría modificar el valor
-        que quiero que reciba si no declaro la casilla que recibe la cárcel
-        como la última
-        */
-    }
+    //-----------------------------
     
     public Boolean jugadorCorrecto (int actual, ArrayList<Jugador> todos){
         return (todos.size()>actual) && (actual>=0);
     }
     
-    void recibeJugador (int actual , ArrayList<Jugador> todos){
-        switch (tipo){
-            case CALLE:
-                recibeJugador_calle(actual,todos);
-                break;
-                
-            case IMPUESTO:
-                recibeJugador_impuesto(actual,todos);
-                break;
-                
-            case JUEZ:
-                recibeJugador_juez(actual,todos);
-                break;
-                
-            case SORPRESA:
-                recibeJugador_sorpresa(actual,todos);
-                break;
-                
-            default:
-                informe(actual,todos);
-                break;
-        }
+    //-----------------------------
+    
+    void recibeJugador (int actual , ArrayList<Jugador> todos){    
+        if (jugadorCorrecto(actual,todos))
+            informe(actual,todos);
     }
     
-    private void recibeJugador_calle (int actual, ArrayList<Jugador> todos ){
-        if (jugadorCorrecto(actual,todos)){
-            
-            informe(actual,todos);
-            
-            if (!tituloPropiedad.tienePropietario() )
-            {
-                todos.get(actual).puedeComprarCasilla();
-            }
-            
-            else  
-            {
-                    tituloPropiedad.tramitarAlquiler(todos.get(actual)); 
-            }
-            
-        }
-    }
-    
-    private void recibeJugador_impuesto (int actual, ArrayList<Jugador> todos ){
-        
-        if (jugadorCorrecto(actual,todos)){
-            informe(actual,todos);
-            
-            //Jugador paga impuesto
-            todos.get(actual).pagaImpuesto(importe);
-        }
-    }
-    
-    private void recibeJugador_juez (int actual, ArrayList<Jugador> todos ){
-       
-        if (jugadorCorrecto(actual,todos)){
-            informe(actual,todos);
-            
-            //Encarcela al jugador
-            todos.get(actual).encarcelar(carcel);
-        }
-    }
-    
-    private void recibeJugador_sorpresa (int actual, ArrayList<Jugador> todos ){
-        if (jugadorCorrecto(actual,todos)){
-            //1
-            Sorpresa sorpresa = mazo.siguiente();
-            
-            //2
-            informe(actual,todos);
-            
-            //3
-            sorpresa.aplicarAJugador(actual, todos);
-        }
-    }
+    //-----------------------------
     
     @Override
     public String toString () {
@@ -182,12 +58,6 @@ public class Casilla {
         representacion = "Casilla: \n"
                         +"\t- Nombre = " + nombre + "\n";
         
-        if (tituloPropiedad != null)
-            representacion += "\t- Titulo de propiedad = " + tituloPropiedad.toString() + "\n";
-        
-        if (sorpresa != null)
-            representacion += "\t- Sorpresa = " + sorpresa.toString() + "\n";
-        
         return representacion;
     }
     
@@ -195,6 +65,7 @@ public class Casilla {
     
     public static void main (String args[]){
         
+        /*
         
         //Declaracion de variables
         TituloPropiedad Titulo1 = new TituloPropiedad("Paseo del Prado",
@@ -256,7 +127,7 @@ public class Casilla {
                 System.out.println(Diario.getInstance().LeerEvento());
         
         
-        
+        */
         
     }
 }
