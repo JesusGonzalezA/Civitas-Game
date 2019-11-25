@@ -358,7 +358,7 @@ public class Jugador implements Comparable<Jugador>{
         
         Diario.getInstance().OcurreEvento("El jugador " + nombre 
                         + " pasa por la casilla de salida." );
-        modificarSaldo(PasoPorSalida);
+        modificarSaldo(getPremioPasoPorSalida());
         
         return true;
     }
@@ -381,15 +381,15 @@ public class Jugador implements Comparable<Jugador>{
         
         Boolean puedo = propiedades.contains(propiedad)
                         && puedoGastar(propiedad.getPrecioEdificar())
-                        && (propiedad.getNumCasas()<CasasMax);
+                        && (propiedad.getNumCasas()<getCasasMax());
         return puedo;
     }
     
     private Boolean puedoEdificarHotel(TituloPropiedad propiedad){
         Boolean puedo = propiedades.contains(propiedad)
                       &&  puedoGastar(propiedad.getPrecioEdificar())
-                      && ((propiedad.getNumCasas())>=CasasPorHotel)
-                      && (propiedad.getNumHoteles()<HotelesMax);
+                      && ((propiedad.getNumCasas())>=getCasasPorHotel())
+                      && (propiedad.getNumHoteles()<getHotelesMax());
         
         return puedo;
     }
@@ -482,11 +482,11 @@ public class Jugador implements Comparable<Jugador>{
                         +"\t- Encarcelado     = " + encarcelado + "\n"
                         +"\t- Salvoconducto   = " + tieneSalvoconducto() + "\n"
                         +"\t- Propiedades     = " + rep_propiedades + "\n"
-                        +"\t- Máximo casas    = " + CasasMax + "\n"
-                        +"\t- Máximo hoteles  = " + HotelesMax + "\n"
-                        +"\t- Casas por Hotel = " + CasasPorHotel + "\n"
-                        +"\t- Paso por salida = " + PasoPorSalida + "\n"
-                        +"\t- Precio libertad = " + PrecioLibertad + "\n"
+                        +"\t- Máximo casas    = " + getCasasMax() + "\n"
+                        +"\t- Máximo hoteles  = " + getHotelesMax() + "\n"
+                        +"\t- Casas por Hotel = " + getCasasPorHotel() + "\n"
+                        +"\t- Paso por salida = " + getPremioPasoPorSalida() + "\n"
+                        +"\t- Precio libertad = " + getPrecioLibertad() + "\n"
                         +"\t- Saldo inicial   = " + SaldoInicial + "\n";
         
         return representacion;
