@@ -203,12 +203,12 @@ public class CivitasJuego {
             casilla_actual = tablero.getCasilla(i);
         }
         
-        mazo.alMazo(new Sorpresa(TipoSorpresa.SALIRCARCEL,mazo));
-        mazo.alMazo(new Sorpresa(TipoSorpresa.IRCASILLA, tablero,posPaseoPrado,"Ir a Paseo del Prado"));
-        mazo.alMazo(new Sorpresa(TipoSorpresa.IRCARCEL, tablero));
-        mazo.alMazo(new Sorpresa(TipoSorpresa.PORCASAHOTEL,tablero, -50,"Paga por propiedades"));
-        mazo.alMazo(new Sorpresa(TipoSorpresa.PAGARCOBRAR,tablero, -50,"Paga"));
-        mazo.alMazo(new Sorpresa(TipoSorpresa.PORJUGADOR,tablero, 50,"Recibe 50 de cada jugador"));
+        mazo.alMazo(new SorpresaSalirCarcel(mazo));
+        mazo.alMazo(new SorpresaIrCasilla(tablero,posPaseoPrado,"Ir a Paseo del Prado"));
+        mazo.alMazo(new SorpresaIrCarcel(tablero));
+        mazo.alMazo(new SorpresaPorCasaHotel("Paga por propiedades",-50));
+        mazo.alMazo(new SorpresaPagarCobrar("Paga",-50));
+        mazo.alMazo(new SorpresaPorJugador("Recibe 50 de cada jugador",50));
     }
     
     private void inicializaTablero (MazoSorpresas mazo){

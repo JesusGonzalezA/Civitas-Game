@@ -7,15 +7,11 @@ package civitas;
 import java.util.ArrayList;
 
 
-public class Sorpresa {
+abstract public class Sorpresa {
     
     //-------------------------------------------------------------
-    private static final int VALORNULO = 0;
-    
     //Atributos de referencia
     private MazoSorpresas mazo;
-    private TipoSorpresa tipo;
-    private Tablero tablero;
     
     //Atributos de instancia
     private String texto;
@@ -26,122 +22,8 @@ public class Sorpresa {
     //Métodos
     
     void aplicarAJugador (int actual, ArrayList<Jugador> todos){
-        
-      
-        switch (tipo) {
-            case IRCASILLA:
-                aplicarAJugador_irACasilla (actual, todos);
-                break;
-            case IRCARCEL:
-                aplicarAJugador_irCarcel (actual,todos);
-                break;
-            case PAGARCOBRAR:
-                aplicarAJugador_pagarCobrar (actual,todos);
-                break;
-            case PORCASAHOTEL:
-                aplicarAJugador_porCasaHotel (actual,todos);
-                break;
-            case PORJUGADOR:
-                aplicarAJugador_porJugador (actual,todos);
-                break;
-            case SALIRCARCEL:
-                aplicarAJugador_salirCarcel (actual,todos);
-                break;
-        } 
-                            
-    }
-    
-    private void aplicarAJugador_irACasilla (int actual, ArrayList<Jugador> todos){
-        
-        if (jugadorCorrecto(actual, todos)){
-            
-           informe(actual,todos);
-           
-           //Ir a casilla
-            
-                //Calcular posicion en el tablero por si pasa por salida
-           int casillaActual = (todos.get(actual).getNumCasillaActual());
-           int tirada = tablero.calcularTirada(casillaActual, valor);
-           casillaActual = tablero.nuevaPosicion (casillaActual, tirada);
-            
-                //Mover a nueva posicion del tablero
-           todos.get(actual).moverACasilla(casillaActual);
-            
-                //La casilla recibe al jugador
-           tablero.getCasilla(casillaActual).recibeJugador(actual, todos);
-        }
-    }
-    
-    private void aplicarAJugador_irCarcel (int actual, ArrayList<Jugador> todos){
-        if (jugadorCorrecto(actual, todos)){
+        if (jugadorCorrecto(actual,todos))
             informe(actual,todos);
-            todos.get(actual).encarcelar(tablero.getCarcel());
-        }
-    }
-    
-    private void aplicarAJugador_pagarCobrar (int actual, ArrayList<Jugador> todos){
-        if (jugadorCorrecto(actual, todos)){
-            informe(actual,todos);
-            
-            //Modifico el saldo del jugador
-            todos.get(actual).modificarSaldo(valor);
-        }
-    }
-    
-    private void aplicarAJugador_porCasaHotel (int actual, ArrayList<Jugador> todos){
-        if (jugadorCorrecto(actual, todos)){
-            informe(actual,todos);
-            
-            //Modifico el saldo del jugador en funcion del numero de propiedades
-            Jugador j = todos.get(actual);
-            j.modificarSaldo(j.cantidadCasasHoteles()*valor);
-        }
-    }
-    
-    private void aplicarAJugador_porJugador (int actual, ArrayList<Jugador> todos){
-        if (jugadorCorrecto(actual, todos)){
-            informe(actual,todos);
-            
-            //Todos los jugadores pagan al jugador actual
-            String textoPagar = "Pagas "+ valor +" a "+todos.get(actual).getNombre();
-            String textoCobrar = "Recibes " + valor + " de cada jugador";
-            int numJugadores = todos.size();
-            
-            Sorpresa pagar = new Sorpresa(TipoSorpresa.PAGARCOBRAR,tablero,-valor,textoPagar);
-            Sorpresa cobro = new Sorpresa(TipoSorpresa.PAGARCOBRAR,tablero,(numJugadores-1)*valor,textoCobrar);
-            //Aplico pagos
-           
-            for (int i=0; i<numJugadores; ++i){
-                if (i != actual)
-                    pagar.aplicarAJugador(i,todos);
-            }
-            
-            //Aplico cobro
-            cobro.aplicarAJugador(actual, todos);
-            
-        }
-    }
-    
-    private void aplicarAJugador_salirCarcel (int actual, ArrayList<Jugador> todos){
-        if (jugadorCorrecto(actual, todos)){
-            informe(actual,todos);
-            
-            
-            //Pregunto por el salvoconducto
-            Boolean alguienTieneSV = false;
-            int numJugadores = todos.size();
-            
-            for (int i=0; i<numJugadores; ++i)
-                if (todos.get(i).tieneSalvoconducto())
-                    alguienTieneSV = true;
-            
-            //Si nadie lo tiene lo obtiene actual y se sale del mazo
-            if (!alguienTieneSV){
-                todos.get(actual).obtenerSalvoconducto(this);
-                this.salirDelMazo();
-            }
-                
-        }
     }
     
     private void informe (int actual, ArrayList<Jugador> todos){
@@ -150,62 +32,17 @@ public class Sorpresa {
         Diario.getInstance().OcurreEvento(evento);
     }
     
-    private void init(){
-        mazo = null;
-        tablero = null;
-        valor = VALORNULO;
-    }
-    
     public Boolean jugadorCorrecto (int actual, ArrayList<Jugador> todos){
         return (todos.size()>actual) && (actual>=0);
     }
     
-    void salirDelMazo (){
-        if (tipo == TipoSorpresa.SALIRCARCEL){
-            mazo.inhabilitarCartaEspecial(this);
-        }
-    }
-    
-    Sorpresa (TipoSorpresa tipo, Tablero tablero){
-        init();
-        this.tablero = tablero;
-        texto = "Ve a la Cárcel";
-        this.tipo = tipo;
-        valor = tablero.getCarcel();
-    }
-    
-    Sorpresa (TipoSorpresa tipo, Tablero tablero, int valor, String texto){
-        init();
-        this.tipo = tipo;
-        this.tablero = tablero;
-        this.valor = valor;
-        this.texto = texto;
-    }
-    
-    Sorpresa (TipoSorpresa tipo, int valor, String texto){
-        init();
-        this.texto = texto;
-        this.tipo = tipo;
-        this.valor = valor;
-    }
-    
-    Sorpresa (TipoSorpresa tipo, MazoSorpresas mazo){
-        init();
-        texto = "Quedas libre de la Cárcel";
-        this.mazo = mazo;
-        this.tipo = tipo;
-        valor = VALORNULO;
+    Sorpresa (String texto){
+        this.texto = texto; 
     }
     
     @Override
     public String toString () {
         return texto;
-    }
-    
-    void usada(){
-        if (tipo == TipoSorpresa.SALIRCARCEL){
-            mazo.habilitarCartaEspecial(this);
-        }
     }
     
     //-------------------------------------------------------------
@@ -228,12 +65,12 @@ public class Sorpresa {
         MazoSorpresas mazo1 = new MazoSorpresas();
         
         System.out.println("*Probando constructores....");
-        Sorpresa libreCarcel = new Sorpresa(TipoSorpresa.SALIRCARCEL,mazo1); 
-        Sorpresa irAPaseoDelPrado = new Sorpresa (TipoSorpresa.IRCASILLA, tablero,1,"Ir a Paseo del Prado");
-        Sorpresa veCarcel = new Sorpresa (TipoSorpresa.IRCARCEL, tablero);
-        Sorpresa impuestoPropiedades = new Sorpresa (TipoSorpresa.PORCASAHOTEL,tablero, 50,"Paga por propiedades");
-        Sorpresa paga = new Sorpresa (TipoSorpresa.PAGARCOBRAR,tablero, -50,"Paga");
-        Sorpresa pagaTodos = new Sorpresa (TipoSorpresa.PORJUGADOR,tablero, 50,"Paga a todos/Cobra 1");
+        SorpresaSalirCarcel libreCarcel = new SorpresaSalirCarcel(mazo1); 
+        SorpresaIrCasilla irAPaseoDelPrado = new SorpresaIrCasilla (tablero,1,"Ir a Paseo del Prado");
+        SorpresaIrCarcel veCarcel = new SorpresaIrCarcel (tablero);
+        SorpresaPorCasaHotel impuestoPropiedades = new SorpresaPorCasaHotel ("Paga por propiedades",50);
+        SorpresaPagarCobrar paga = new SorpresaPagarCobrar ("Paga",-50);
+        SorpresaPorJugador pagaTodos = new SorpresaPorJugador ("Paga a todos/Cobra 1",50);
        
             //Añado al mazo la sorpresa libre carcel
         mazo1.alMazo(libreCarcel);
@@ -251,11 +88,6 @@ public class Sorpresa {
         //Probando usada
         System.out.println("*Probando usada....");
         libreCarcel.usada();
-        irAPaseoDelPrado.usada();
-        veCarcel.usada();
-        impuestoPropiedades.usada();
-        paga.usada();
-        pagaTodos.usada();
 
         System.out.println("\tLeyendo diario...");
         while(Diario.getInstance().EventosPendientes())
@@ -264,11 +96,6 @@ public class Sorpresa {
         //Probando salir del mazo
         System.out.println("*Probando salir del mazo....");
         libreCarcel.salirDelMazo();
-        irAPaseoDelPrado.salirDelMazo();
-        veCarcel.salirDelMazo();
-        impuestoPropiedades.salirDelMazo();
-        paga.salirDelMazo();
-        pagaTodos.salirDelMazo();
 
         System.out.println("\tLeyendo diario...");
         while(Diario.getInstance().EventosPendientes())
@@ -298,13 +125,6 @@ public class Sorpresa {
         
 
         //Probando informe
-        System.out.println("*Probando informe....");
-        libreCarcel.informe(1,todos);
-        irAPaseoDelPrado.informe(0,todos);
-        veCarcel.informe(0,todos);
-        impuestoPropiedades.informe(0,todos);
-        paga.informe(0,todos);
-        pagaTodos.informe(0,todos);
 
         System.out.println("\tLeyendo diario...");
         while(Diario.getInstance().EventosPendientes())

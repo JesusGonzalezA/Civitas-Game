@@ -9,7 +9,7 @@ public class Jugador implements Comparable<Jugador>{
     
     //-------------------------------------------------------------
     //Atributos de referencia
-    private Sorpresa salvoconducto;
+    private SorpresaSalirCarcel salvoconducto;
     private ArrayList<TituloPropiedad> propiedades;
     
     //Atributos de instancia
@@ -318,7 +318,7 @@ public class Jugador implements Comparable<Jugador>{
         return movida;
     }
     
-    Boolean obtenerSalvoconducto (Sorpresa sorpresa){
+    Boolean obtenerSalvoconducto (SorpresaSalirCarcel sorpresa){
         
         Boolean obtenido = false;
         if (!isEncarcelado())

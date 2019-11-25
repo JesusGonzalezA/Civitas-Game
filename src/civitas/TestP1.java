@@ -191,8 +191,8 @@ public class TestP1 {
         
         
             //Probando alMazo
-        Sorpresa S = new Sorpresa (TipoSorpresa.IRCASILLA, 3,"Hola");
-        Sorpresa S2 = new Sorpresa (TipoSorpresa.IRCASILLA, 3,"adios");
+        SorpresaIrCasilla S = new SorpresaIrCasilla (tab1,3,"Hola");
+        SorpresaIrCasilla S2 = new SorpresaIrCasilla (tab1,3,"adios");
         
                 //Mazo en modo debug
         System.out.println("Mostrando cartas mazo modo debug, orden hola adios hola ...");
