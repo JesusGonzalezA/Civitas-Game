@@ -203,6 +203,7 @@ public class CivitasJuego {
             casilla_actual = tablero.getCasilla(i);
         }
         
+        mazo.alMazo(new SorpresaConvertir(200.0f));
         mazo.alMazo(new SorpresaSalirCarcel(mazo));
         mazo.alMazo(new SorpresaIrCasilla(tablero,posPaseoPrado,"Ir a Paseo del Prado"));
         mazo.alMazo(new SorpresaIrCarcel(tablero));
