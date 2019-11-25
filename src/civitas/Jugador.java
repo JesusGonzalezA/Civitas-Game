@@ -276,7 +276,14 @@ public class Jugador implements Comparable<Jugador>{
         
         //Inicializo atributos de referencia
         salvoconducto = otro.salvoconducto;
+        
+        //Copio propiedades
         propiedades = otro.propiedades;
+        otro.propiedades = new ArrayList<>();
+        
+        int tam = propiedades.size();
+        for (int i=0; i<tam;++i)
+            propiedades.get(i).actualizaPropietarioPorConversion(this);
         
         //Inicializo atributos de instancia
         encarcelado = otro.encarcelado;
