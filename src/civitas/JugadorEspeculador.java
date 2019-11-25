@@ -27,24 +27,19 @@ public class JugadorEspeculador extends Jugador{
     
     @Override
     protected int getHotelesMax(){
-        return HotelesMax*FactorEspeculador;
+        return super.getHotelesMax()*FactorEspeculador;
     }
     
     @Override
     protected int getCasasMax(){
-        return CasasMax*FactorEspeculador;
+        return super.getCasasMax()*FactorEspeculador;
     }
 
     @Override
     Boolean pagaImpuesto(float cantidad){
-        Boolean pagado = false;
         cantidad = cantidad/FactorEspeculador;
         
-        if (!isEncarcelado()){
-            pagado = paga(cantidad);
-        }
-            
-        return pagado;
+        return super.pagaImpuesto(cantidad);
     }
     
     @Override
