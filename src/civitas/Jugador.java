@@ -353,7 +353,7 @@ public class Jugador implements Comparable<Jugador>{
     
     Boolean pagaImpuesto(float cantidad){
         Boolean pagado = false;
-        
+
         if (!isEncarcelado()){
             pagado = paga(cantidad);
         }

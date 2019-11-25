@@ -27,8 +27,7 @@ public class SorpresaConvertir extends Sorpresa{
     void aplicarAJugador (int actual, ArrayList<Jugador> todos){
         if (jugadorCorrecto(actual, todos)){
             super.aplicarAJugador(actual, todos);
-            Jugador act = todos.get(actual);
-            act = new JugadorEspeculador(act,fianza);
+            todos.set(actual, new JugadorEspeculador(todos.get(actual),fianza));
         }
     }
 }

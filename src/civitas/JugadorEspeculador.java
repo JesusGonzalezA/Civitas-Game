@@ -37,9 +37,8 @@ public class JugadorEspeculador extends Jugador{
 
     @Override
     Boolean pagaImpuesto(float cantidad){
-        cantidad = cantidad/FactorEspeculador;
-        
-        return super.pagaImpuesto(cantidad);
+        float cantidadEspeculador = cantidad/FactorEspeculador;
+        return super.pagaImpuesto(cantidadEspeculador);
     }
     
     @Override

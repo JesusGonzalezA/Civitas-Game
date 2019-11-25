@@ -20,6 +20,7 @@ public class TestP4 {
         TituloPropiedad Murcia = new TituloPropiedad("Murcia",
                                         25.0f,50.0f,1000.0f,2000.0f,500.0f);
         
+        
         //Comprar casilla
         j1.puedeComprarCasilla();
         j1.comprar(Murcia);
@@ -28,6 +29,7 @@ public class TestP4 {
         //Mostrar que la transacción ha sido un éxito
         System.out.println(j1.toString());
         System.out.println(Murcia.toString());
+        j1.pagaImpuesto(200);
         
         //Cambiar a jugador especulador
         SorpresaConvertir convertir = new SorpresaConvertir(200);
@@ -37,6 +39,9 @@ public class TestP4 {
         
         //Muestro el propietario
         System.out.println(Murcia.getPropietario().toString());
+        
+        todos.get(0).pagaImpuesto(200);
+        
         
         //Leer diario
         while(Diario.getInstance().EventosPendientes())
