@@ -27,6 +27,7 @@ public class SorpresaPorJugador extends Sorpresa{
     @Override
     void aplicarAJugador (int actual, ArrayList<Jugador> todos){
         if (jugadorCorrecto(actual, todos)){
+            super.aplicarAJugador(actual, todos);
             //Todos los jugadores pagan al jugador actual
             String textoPagar = "Pagas "+ valor +" a "+todos.get(actual).getNombre();
             String textoCobrar = "Recibes " + valor + " de cada jugador";

@@ -27,6 +27,7 @@ public class SorpresaPorCasaHotel extends Sorpresa{
     @Override
     void aplicarAJugador (int actual, ArrayList<Jugador> todos){
         if (jugadorCorrecto(actual, todos)){
+            super.aplicarAJugador(actual, todos);
             //Modifico el saldo del jugador en funcion del numero de propiedades
             Jugador j = todos.get(actual);
             j.modificarSaldo(j.cantidadCasasHoteles()*valor);

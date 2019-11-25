@@ -27,6 +27,7 @@ public class SorpresaPagarCobrar extends Sorpresa{
     @Override
     void aplicarAJugador (int actual, ArrayList<Jugador> todos){
         if (jugadorCorrecto(actual, todos)){
+            super.aplicarAJugador(actual, todos);
             //Modifico el saldo del jugador
             todos.get(actual).modificarSaldo(valor);
         }

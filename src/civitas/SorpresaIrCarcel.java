@@ -29,6 +29,7 @@ public class SorpresaIrCarcel extends Sorpresa{
     @Override
     void aplicarAJugador (int actual, ArrayList<Jugador> todos){
         if (jugadorCorrecto(actual, todos)){
+            super.aplicarAJugador(actual, todos);
             todos.get(actual).encarcelar(tablero.getCarcel());
         }
     }

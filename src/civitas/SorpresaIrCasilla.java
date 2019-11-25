@@ -30,7 +30,7 @@ public class SorpresaIrCasilla extends Sorpresa{
     void aplicarAJugador (int actual, ArrayList<Jugador> todos){
         
         if (jugadorCorrecto(actual, todos)){
-            
+            super.aplicarAJugador(actual, todos);
            //Ir a casilla
             
                 //Calcular posicion en el tablero por si pasa por salida
