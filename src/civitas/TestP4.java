@@ -42,6 +42,8 @@ public class TestP4 {
         
         todos.get(0).pagaImpuesto(200);
         
+        todos.get(0).encarcelar(0);
+        
         
         //Leer diario
         while(Diario.getInstance().EventosPendientes())

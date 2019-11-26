@@ -204,8 +204,8 @@ public class CivitasJuego {
         }
         
         mazo.alMazo(new SorpresaConvertir(200.0f));
-        mazo.alMazo(new SorpresaSalirCarcel(mazo));
         mazo.alMazo(new SorpresaIrCasilla(tablero,posPaseoPrado,"Ir a Paseo del Prado"));
+        mazo.alMazo(new SorpresaSalirCarcel(mazo));
         mazo.alMazo(new SorpresaIrCarcel(tablero));
         mazo.alMazo(new SorpresaPorCasaHotel("Paga por propiedades",-50));
         mazo.alMazo(new SorpresaPagarCobrar("Paga",-50));
