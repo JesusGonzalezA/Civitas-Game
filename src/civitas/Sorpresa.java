@@ -10,12 +10,8 @@ import java.util.ArrayList;
 abstract public class Sorpresa {
     
     //-------------------------------------------------------------
-    //Atributos de referencia
-    private MazoSorpresas mazo;
-    
     //Atributos de instancia
     private String texto;
-    private int valor;
     
     
     //-------------------------------------------------------------
