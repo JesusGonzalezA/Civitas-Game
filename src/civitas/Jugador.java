@@ -2,6 +2,7 @@ package civitas;
 
 //import civitas.TituloPropiedad;
 //import civitas.Sorpresa;
+import GUI.Dado;
 
 import java.util.ArrayList;
 

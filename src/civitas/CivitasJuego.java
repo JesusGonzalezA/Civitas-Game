@@ -5,7 +5,7 @@ package civitas;
 //import civitas.GestorEstados;
 //import civitas.Tablero;
 //import civitas.MazoSorpresas;
-
+import GUI.Dado;
 import java.util.ArrayList;
 import java.util.Collections;
 import static java.util.Collections.sort;
