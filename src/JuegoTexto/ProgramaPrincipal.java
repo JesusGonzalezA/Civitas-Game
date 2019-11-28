@@ -6,7 +6,7 @@ la vista y el controlador
 package JuegoTexto;
 
 import civitas.CivitasJuego;
-import civitas.Dado;
+import GUI.Dado;
 //import JuegoTexto.VistaTextual
 //import JuegoTexto.Controlador
 import java.util.ArrayList;
