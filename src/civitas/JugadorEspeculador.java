@@ -42,6 +42,11 @@ public class JugadorEspeculador extends Jugador{
     }
     
     @Override
+    public Boolean isEspeculador(){
+        return true;
+    }
+    
+    @Override
     public String toString(){
         String representacion,tipo;
         

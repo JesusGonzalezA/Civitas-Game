@@ -206,7 +206,7 @@ public class Jugador implements Comparable<Jugador>{
         return HotelesMax;
     }
     
-    protected String getNombre(){
+    public String getNombre(){
         return nombre;
     }
     
@@ -232,6 +232,15 @@ public class Jugador implements Comparable<Jugador>{
     
     protected float getSaldo(){
         return saldo;
+    }
+    
+    public Boolean isEspeculador(){
+        return false;
+    }
+    
+    public float getSSaldo(){
+        float copia = saldo;
+        return copia;
     }
     
     Boolean hipotecar (int ip){     //p3
