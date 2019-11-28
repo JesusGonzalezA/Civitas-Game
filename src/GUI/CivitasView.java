@@ -55,7 +55,7 @@ public class CivitasView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void setCivitasJuego (CivitasJuego juego){
+    void setCivitasJuego (CivitasJuego juego){
         this.juego = juego;
         setVisible(true);
     }
