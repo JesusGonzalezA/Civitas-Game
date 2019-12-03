@@ -8,6 +8,8 @@ package GUI;
 import GUI.CivitasView;
 import GUI.Dado;
 import civitas.CivitasJuego;
+import civitas.Jugador;
+import civitas.TituloPropiedad;
 import java.util.ArrayList;
 
 /**
@@ -31,22 +33,31 @@ public class TestP5 {
         
         //Creo una instancia de captura nombres
         CapturaNombres capturador = new CapturaNombres(vista,Boolean.TRUE);
-        ArrayList<String> nombres = new ArrayList<>();
-        nombres = capturador.getNombres();
+        capturador.setLocationRelativeTo(null);
+        capturador.setResizable(false);
+        ArrayList<String> nombres = capturador.getNombres();
         
         //Crear una instancia del juego
         CivitasJuego juego = new CivitasJuego(nombres);
+        Jugador j1 = juego.getJugadorActual();
+        j1.anadir(new TituloPropiedad("Paseo del Prado",
+                50.0f,100.0f,2000.0f,4000.0f,1000.0f));
         
         //Crear el controlador
         Controlador controlador = new Controlador(juego,vista);
         
         //Hilar el juego con la vista
         vista.setCivitasJuego(juego);
+        vista.setVisible(true);
+        vista.setResizable(false);
+        vista.setLocationRelativeTo(null);
         
         //***************************************************************
         
         //---------------------------------------------------------------
+        //FLUJO DEL JUEGO
         //---------------------------------------------------------------
+        vista.mostrarSiguienteOperacion(juego.siguientePaso());
         //***************************************************************
     }
 }

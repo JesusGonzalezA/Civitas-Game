@@ -222,7 +222,7 @@ public class Jugador implements Comparable<Jugador>{
         return PasoPorSalida;
     }
     
-    protected ArrayList<TituloPropiedad> getPropiedades(){
+    public ArrayList<TituloPropiedad> getPropiedades(){
         return propiedades;
     }
     
@@ -526,6 +526,10 @@ public class Jugador implements Comparable<Jugador>{
        }
        
        return completado;
+    }
+    
+    public void anadir (TituloPropiedad titulo){
+        this.propiedades.add(titulo);
     }
     
     //-------------------------------------------------------------

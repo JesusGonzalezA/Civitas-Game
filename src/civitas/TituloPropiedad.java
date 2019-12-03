@@ -40,7 +40,7 @@ public class TituloPropiedad {
         return cancelada;
     }
     
-    int cantidadCasasHoteles(){
+    public int cantidadCasasHoteles(){
         return getNumCasas()+getNumHoteles();
     }
     
@@ -114,7 +114,7 @@ public class TituloPropiedad {
         return importe;
     }
     
-    String getNombre(){
+    public String getNombre(){
         return nombre;
     }
     
@@ -179,7 +179,7 @@ public class TituloPropiedad {
         return (propietario!=null);
     }
     
-    TituloPropiedad(String nom, Float ab, Float fr, Float hb, Float pc, 
+    public TituloPropiedad(String nom, Float ab, Float fr, Float hb, Float pc, 
                 Float pe)
     {
         nombre = nom;

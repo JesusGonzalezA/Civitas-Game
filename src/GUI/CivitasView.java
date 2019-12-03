@@ -6,6 +6,7 @@
 package GUI;
 
 import civitas.CivitasJuego;
+import civitas.OperacionesJuego;
 /**
  *
  * @author jesus
@@ -17,6 +18,17 @@ public class CivitasView extends javax.swing.JFrame {
      */
     public CivitasView() {
         initComponents();
+        
+        //Ocultar ranking
+        jTextAreaRanking.setVisible(false);
+        jLabelRanking.setVisible(false);
+        jScrollPane3.setVisible(false);
+        
+        //Inicializar el panel de jugador
+        jugadorPanel = new JugadorPanel();
+        contenedorVistaJugador.add(jugadorPanel);
+        repaint();
+        revalidate();
     }
 
     /**
@@ -27,8 +39,20 @@ public class CivitasView extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         titulo = new javax.swing.JLabel();
+        contenedorVistaJugador = new javax.swing.JPanel();
+        jPanelCasillaActual = new javax.swing.JPanel();
+        jLabelSigOpTitulo = new javax.swing.JLabel();
+        jTextFieldSiguienteOp = new javax.swing.JTextField();
+        jLabelRanking = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextAreaRanking = new javax.swing.JTextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaCasillaActual = new javax.swing.JTextArea();
+        jLabelCasillaActualTitulo = new javax.swing.JLabel();
+        jLabelJugadorActualTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -36,20 +60,120 @@ public class CivitasView extends javax.swing.JFrame {
         titulo.setText("Civitas");
         titulo.setEnabled(false);
 
+        javax.swing.GroupLayout jPanelCasillaActualLayout = new javax.swing.GroupLayout(jPanelCasillaActual);
+        jPanelCasillaActual.setLayout(jPanelCasillaActualLayout);
+        jPanelCasillaActualLayout.setHorizontalGroup(
+            jPanelCasillaActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 241, Short.MAX_VALUE)
+        );
+        jPanelCasillaActualLayout.setVerticalGroup(
+            jPanelCasillaActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 265, Short.MAX_VALUE)
+        );
+
+        jLabelSigOpTitulo.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
+        jLabelSigOpTitulo.setText("Siguiente Operación");
+        jLabelSigOpTitulo.setEnabled(false);
+
+        jTextFieldSiguienteOp.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
+        jTextFieldSiguienteOp.setText("jTextField1");
+        jTextFieldSiguienteOp.setEnabled(false);
+
+        jLabelRanking.setFont(new java.awt.Font("Laksaman", 1, 15)); // NOI18N
+        jLabelRanking.setText("Ranking");
+        jLabelRanking.setEnabled(false);
+
+        jTextAreaRanking.setColumns(20);
+        jTextAreaRanking.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
+        jTextAreaRanking.setRows(5);
+        jTextAreaRanking.setText("Muestro el ranking aqui");
+        jTextAreaRanking.setEnabled(false);
+        jScrollPane3.setViewportView(jTextAreaRanking);
+
+        jTextAreaCasillaActual.setColumns(20);
+        jTextAreaCasillaActual.setRows(5);
+        jTextAreaCasillaActual.setText("Informacion de la casilla actual");
+        jTextAreaCasillaActual.setEnabled(false);
+        jScrollPane1.setViewportView(jTextAreaCasillaActual);
+
+        jLabelCasillaActualTitulo.setFont(new java.awt.Font("Laksaman", 1, 15)); // NOI18N
+        jLabelCasillaActualTitulo.setText("Casilla Actual");
+        jLabelCasillaActualTitulo.setEnabled(false);
+
+        jLabelJugadorActualTitulo.setFont(new java.awt.Font("Laksaman", 1, 15)); // NOI18N
+        jLabelJugadorActualTitulo.setText("Jugador Actual");
+        jLabelJugadorActualTitulo.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(326, 326, 326)
-                .addComponent(titulo)
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(jLabelCasillaActualTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(contenedorVistaJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelJugadorActualTitulo)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(20, 20, 20)
+                                        .addComponent(jLabelSigOpTitulo)
+                                        .addGap(16, 16, 16)
+                                        .addComponent(jTextFieldSiguienteOp, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(99, 99, 99)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(110, 110, 110)
+                                                .addComponent(jLabelRanking)))))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(0, 20, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(titulo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanelCasillaActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 544, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addComponent(titulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanelCasillaActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(105, 105, 105))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelJugadorActualTitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(contenedorVistaJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(jLabelCasillaActualTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jLabelSigOpTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jTextFieldSiguienteOp, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelRanking))
+                .addGap(17, 17, 17))
         );
 
         pack();
@@ -60,6 +184,32 @@ public class CivitasView extends javax.swing.JFrame {
         setVisible(true);
     }
     
+    private void actualizarVista (){
+        jugadorPanel.setJugador(juego.getJugadorActual());
+        actualizarCasilla();
+        
+        if (juego.finalDelJuego()){
+            mostrarRanking();
+        }
+        
+        repaint();
+        revalidate();
+    }
+    
+    private void mostrarRanking(){
+        jLabelRanking.setVisible(true);
+        jTextAreaRanking.setVisible(true);
+    }
+    
+    private void actualizarCasilla(){
+        jLabelCasillaActualTitulo.setText("Casilla actual:");
+        jTextAreaCasillaActual.setText(juego.getCasillaActual().toString());
+    }
+   
+    void mostrarSiguienteOperacion(OperacionesJuego op){
+        jTextFieldSiguienteOp.setText(op.name());
+        actualizarVista();
+    }
     /**
      * @param args the command line arguments
      */
@@ -96,8 +246,20 @@ public class CivitasView extends javax.swing.JFrame {
     }
 
     //--------------------------------------------------------------
+    private JugadorPanel jugadorPanel;
     private CivitasJuego juego;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel contenedorVistaJugador;
+    private javax.swing.JLabel jLabelCasillaActualTitulo;
+    private javax.swing.JLabel jLabelJugadorActualTitulo;
+    private javax.swing.JLabel jLabelRanking;
+    private javax.swing.JLabel jLabelSigOpTitulo;
+    private javax.swing.JPanel jPanelCasillaActual;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextAreaCasillaActual;
+    private javax.swing.JTextArea jTextAreaRanking;
+    private javax.swing.JTextField jTextFieldSiguienteOp;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
