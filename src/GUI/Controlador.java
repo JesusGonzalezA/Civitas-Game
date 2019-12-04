@@ -2,7 +2,7 @@ package GUI;
 
 import civitas.CivitasJuego;
 import civitas.OperacionesJuego;
-import civitas.Respuestas;
+import GUI.Respuestas;
 import civitas.OperacionInmobiliaria;
 import civitas.GestionesInmobiliarias;
 import civitas.SalidasCarcel;
@@ -19,7 +19,7 @@ public class Controlador {
         this.vista = vista;
     }
     
-    /*
+    
     void juega(){
         
         //Mostrar el estado del juego actualizado
@@ -32,7 +32,7 @@ public class Controlador {
             vista.actualizarVista();
             
             //Pausar (espera la interacción del usuario entre dos turnos)
-            vista.pausa();
+//            vista.pausa();
             
             //Mostrar la siguiente operacion y si no es pasar turno diario
             OperacionesJuego operacion = juego.siguientePaso();
@@ -53,75 +53,71 @@ public class Controlador {
                         resp = vista.comprar();
                         if (resp == Respuestas.SI){
                             juego.comprar();
+                            juego.getJugadorActual().bancarrota();
                         }
                         juego.siguientePasoCompletado(operacion);
      
                         break;
                     
-                    case GESTIONAR:
-                        vista.gestionar();
-                        
-                        //Obtengo la gestion inmobiliaria
-                        int igestion = vista.getGestion(); 
-                        int ipropiedad = vista.getPropiedad();
-                        
-                        GestionesInmobiliarias gestion = 
-                                    GestionesInmobiliarias.values()[igestion];
-                        
-                        //Si la gestión elegida es TERMINAR se llama a sig oper
-                        switch (gestion){
-                            case VENDER:
-                                juego.vender(ipropiedad);
-                                break;
-                                
-                            case HIPOTECAR:
-                                juego.hipotecar(ipropiedad);
-                                break;
-                                
-                            case CANCELAR_HIPOTECA:
-                                juego.cancelarHipoteca(ipropiedad);
-                                break;
-                                
-                            case CONSTRUIR_CASA:
-                                juego.construirCasa(ipropiedad);
-                                break;
-                                
-                            case CONSTRUIR_HOTEL:
-                                juego.construirHotel(ipropiedad);
-                                break;
-                                
-                            case TERMINAR:
-                                juego.siguientePasoCompletado(operacion);
-                                break;
-                        }
-                        
-                        break; //gestionar
-                    
-                    case SALIR_CARCEL:
-                        SalidasCarcel tipoSalida;
-                        tipoSalida = vista.salirCarcel();
-                        
-                        if (tipoSalida == SalidasCarcel.PAGANDO)
-                            juego.salirCarcelPagando();
-                            
-                        else 
-                            juego.salirCarcelTirando();
-                        
-                        
-                        juego.siguientePasoCompletado(operacion);
-                        
-                        break;
+//                    case GESTIONAR:
+//                        vista.gestionar();
+//                        
+//                        //Obtengo la gestion inmobiliaria
+//                        int igestion = vista.getGestion(); 
+//                        int ipropiedad = vista.getPropiedad();
+//                        
+//                        GestionesInmobiliarias gestion = 
+//                                    GestionesInmobiliarias.values()[igestion];
+//                        
+//                        //Si la gestión elegida es TERMINAR se llama a sig oper
+//                        switch (gestion){
+//                            case VENDER:
+//                                juego.vender(ipropiedad);
+//                                break;
+//                                
+//                            case HIPOTECAR:
+//                                juego.hipotecar(ipropiedad);
+//                                break;
+//                                
+//                            case CANCELAR_HIPOTECA:
+//                                juego.cancelarHipoteca(ipropiedad);
+//                                break;
+//                                
+//                            case CONSTRUIR_CASA:
+//                                juego.construirCasa(ipropiedad);
+//                                break;
+//                                
+//                            case CONSTRUIR_HOTEL:
+//                                juego.construirHotel(ipropiedad);
+//                                break;
+//                                
+//                            case TERMINAR:
+//                                juego.siguientePasoCompletado(operacion);
+//                                break;
+//                        }
+//                        
+//                        break; //gestionar
+//                    
+//                    case SALIR_CARCEL:
+//                        SalidasCarcel tipoSalida;
+//                        tipoSalida = vista.salirCarcel();
+//                        
+//                        if (tipoSalida == SalidasCarcel.PAGANDO)
+//                            juego.salirCarcelPagando();
+//                            
+//                        else 
+//                            juego.salirCarcelTirando();
+//                        
+//                        
+//                        juego.siguientePasoCompletado(operacion);
+//                        
+//                        break;
                 
                 } //realizando la operacion
                         
             }//si continuo es porque debo realizar una operacion
         }//while(continuar) --> jugando
-        
-        //Termino de jugar, mostrar el ranking
-        vista.actualizarVista();
-        
-        
     }
-    */
+    
 }
 

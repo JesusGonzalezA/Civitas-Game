@@ -9,12 +9,12 @@ import civitas.TituloPropiedad;
  *
  * @author jesus
  */
-public class PropiedadPanel extends javax.swing.JPanel {
+class PropiedadPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form PropiedadPanel
      */
-    public PropiedadPanel() {
+    PropiedadPanel() {
         initComponents();
     }
 

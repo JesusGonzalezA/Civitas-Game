@@ -7,6 +7,9 @@ package GUI;
 
 import civitas.CivitasJuego;
 import civitas.OperacionesJuego;
+import javax.swing.JOptionPane;
+//import DiarioDialog;
+//import Respuestas;
 /**
  *
  * @author jesus
@@ -19,6 +22,9 @@ public class CivitasView extends javax.swing.JFrame {
     public CivitasView() {
         initComponents();
         
+        //Creo una instancia de diálogo de diario
+        DiarioDialog.createInstance(this);
+          
         //Ocultar ranking
         jTextAreaRanking.setVisible(false);
         jLabelRanking.setVisible(false);
@@ -27,6 +33,13 @@ public class CivitasView extends javax.swing.JFrame {
         //Inicializar el panel de jugador
         jugadorPanel = new JugadorPanel();
         contenedorVistaJugador.add(jugadorPanel);
+        
+        //Interfaz
+        setVisible(true);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        
+        //Actualizar
         repaint();
         revalidate();
     }
@@ -39,7 +52,6 @@ public class CivitasView extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         titulo = new javax.swing.JLabel();
         contenedorVistaJugador = new javax.swing.JPanel();
@@ -76,8 +88,13 @@ public class CivitasView extends javax.swing.JFrame {
         jLabelSigOpTitulo.setEnabled(false);
 
         jTextFieldSiguienteOp.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
-        jTextFieldSiguienteOp.setText("jTextField1");
+        jTextFieldSiguienteOp.setText("Operacion");
         jTextFieldSiguienteOp.setEnabled(false);
+        jTextFieldSiguienteOp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldSiguienteOpActionPerformed(evt);
+            }
+        });
 
         jLabelRanking.setFont(new java.awt.Font("Laksaman", 1, 15)); // NOI18N
         jLabelRanking.setText("Ranking");
@@ -179,12 +196,16 @@ public class CivitasView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextFieldSiguienteOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSiguienteOpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSiguienteOpActionPerformed
+
     void setCivitasJuego (CivitasJuego juego){
         this.juego = juego;
         setVisible(true);
     }
     
-    private void actualizarVista (){
+    void actualizarVista (){
         jugadorPanel.setJugador(juego.getJugadorActual());
         actualizarCasilla();
         
@@ -197,8 +218,13 @@ public class CivitasView extends javax.swing.JFrame {
     }
     
     private void mostrarRanking(){
+        //Visibilizo
         jLabelRanking.setVisible(true);
+        jScrollPane3.setVisible(true);
         jTextAreaRanking.setVisible(true);
+        
+        //Edito el texto
+        jTextAreaRanking.setText(juego.getRanking());
     }
     
     private void actualizarCasilla(){
@@ -208,42 +234,57 @@ public class CivitasView extends javax.swing.JFrame {
    
     void mostrarSiguienteOperacion(OperacionesJuego op){
         jTextFieldSiguienteOp.setText(op.name());
-        actualizarVista();
+//        actualizarVista();
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CivitasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CivitasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CivitasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CivitasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CivitasView().setVisible(true);
-            }
-        });
+    
+    void mostrarEventos(){
+        DiarioDialog.getInstance().mostrarEventos();
     }
+    
+    Respuestas comprar(){
+        int opcion = JOptionPane.showConfirmDialog( 
+                                       null, 
+                                       "¿Quieres comprar la calle actual?",
+                                       "Compra",
+                                        JOptionPane.YES_NO_OPTION
+                                      );
+        
+        //Opcion --> 0 SI  | 1 NO
+        return Respuestas.values()[opcion];
+    }
+    
+    
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(CivitasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(CivitasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(CivitasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(CivitasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new CivitasView().setVisible(true);
+//            }
+//        });
+//    }
 
     //--------------------------------------------------------------
     private JugadorPanel jugadorPanel;

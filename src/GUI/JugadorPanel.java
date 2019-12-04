@@ -12,12 +12,12 @@ import java.util.ArrayList;
  *
  * @author jesus
  */
-public class JugadorPanel extends javax.swing.JPanel {
+class JugadorPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form JugadorPanel
      */
-    public JugadorPanel() {
+    JugadorPanel() {
         initComponents();
     }
 
@@ -56,15 +56,20 @@ public class JugadorPanel extends javax.swing.JPanel {
         jLabelEspeculador.setEnabled(false);
 
         jTextFieldNombre.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
-        jTextFieldNombre.setText("jTextField1");
+        jTextFieldNombre.setText("Nombre");
         jTextFieldNombre.setEnabled(false);
+        jTextFieldNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNombreActionPerformed(evt);
+            }
+        });
 
         jTextFieldSaldo.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
-        jTextFieldSaldo.setText("jTextField2");
+        jTextFieldSaldo.setText("Saldo");
         jTextFieldSaldo.setEnabled(false);
 
         jTextFieldEncarcelado.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
-        jTextFieldEncarcelado.setText("jTextField3");
+        jTextFieldEncarcelado.setText("Encarcelado");
         jTextFieldEncarcelado.setEnabled(false);
         jTextFieldEncarcelado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +79,7 @@ public class JugadorPanel extends javax.swing.JPanel {
 
         propiedades.setEnabled(false);
 
-        jTextFieldEspeculador.setText("jTextField4");
+        jTextFieldEspeculador.setText("Especulador");
         jTextFieldEspeculador.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -104,16 +109,13 @@ public class JugadorPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(propiedades, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(jLabelSaldo))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelNombre)
-                                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelNombre)
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelSaldo))
                         .addGap(7, 7, 7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelEncarcelado)
@@ -129,6 +131,10 @@ public class JugadorPanel extends javax.swing.JPanel {
     private void jTextFieldEncarceladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEncarceladoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldEncarceladoActionPerformed
+
+    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombreActionPerformed
 
 
     //Métodos

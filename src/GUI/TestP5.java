@@ -23,41 +23,42 @@ public class TestP5 {
         //--------------------------------------------------------------
         //DECLARACION DE VARIABLES Y PREPARACION
         //--------------------------------------------------------------
-        //Creo la vista
+        //Instanciacion
+        
+        //  Vista
+        //  |
+        //  -> Dado
+        //  -> Capturador
+        //     |
+        //     -> Juego
+        //        |
+        //        -> Controlador
+        
+            //Vista
         CivitasView vista = new CivitasView();
-        
-        //Creo una instancia de dado, al que indico la interfaz donde 
-        //se mostrará
+            //Dado
         Dado.createInstance(vista);
-        Dado.getInstance().setDebug(Boolean.TRUE);
-        
-        //Creo una instancia de captura nombres
+            //Capturador
         CapturaNombres capturador = new CapturaNombres(vista,Boolean.TRUE);
-        capturador.setLocationRelativeTo(null);
-        capturador.setResizable(false);
+            //Juego
         ArrayList<String> nombres = capturador.getNombres();
-        
-        //Crear una instancia del juego
         CivitasJuego juego = new CivitasJuego(nombres);
-        Jugador j1 = juego.getJugadorActual();
-        j1.anadir(new TituloPropiedad("Paseo del Prado",
-                50.0f,100.0f,2000.0f,4000.0f,1000.0f));
-        
-        //Crear el controlador
+            //Controlador
         Controlador controlador = new Controlador(juego,vista);
+        
+        
+        //Pongo el modo debug
+        Dado.getInstance().setDebug(Boolean.TRUE);
         
         //Hilar el juego con la vista
         vista.setCivitasJuego(juego);
-        vista.setVisible(true);
-        vista.setResizable(false);
-        vista.setLocationRelativeTo(null);
         
         //***************************************************************
         
         //---------------------------------------------------------------
         //FLUJO DEL JUEGO
         //---------------------------------------------------------------
-        vista.mostrarSiguienteOperacion(juego.siguientePaso());
+        controlador.juega();
         //***************************************************************
     }
 }

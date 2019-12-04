@@ -24,6 +24,9 @@ public class CapturaNombres extends javax.swing.JDialog {
             System.exit(0);
             }
         });
+        
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**
