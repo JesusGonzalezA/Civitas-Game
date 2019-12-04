@@ -527,9 +527,10 @@ public class Jugador implements Comparable<Jugador>{
        
        return completado;
     }
+   
     
-    public void anadir (TituloPropiedad titulo){
-        this.propiedades.add(titulo);
+    public void bancarrota(){
+        this.saldo = -1;
     }
     
     //-------------------------------------------------------------
