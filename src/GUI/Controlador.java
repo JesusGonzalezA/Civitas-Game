@@ -31,15 +31,14 @@ public class Controlador {
             //Muestro el estado actual del juego
             vista.actualizarVista();
             
-            //Pausar (espera la interacción del usuario entre dos turnos)
-//            vista.pausa();
-            
             //Mostrar la siguiente operacion y si no es pasar turno diario
             OperacionesJuego operacion = juego.siguientePaso();
             vista.mostrarSiguienteOperacion(operacion);
             
             if (operacion != OperacionesJuego.PASAR_TURNO)
                 vista.mostrarEventos();
+            else
+                vista.pausaCambioTurno();
             
             //Pregunto si es el final del juego
                 //Sí --> continuar = false

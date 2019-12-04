@@ -241,6 +241,10 @@ public class CivitasView extends javax.swing.JFrame {
         DiarioDialog.getInstance().mostrarEventos();
     }
     
+    void pausaCambioTurno() {
+        JOptionPane.showMessageDialog(this, "Paso de turno");
+    }
+    
     Respuestas comprar(){
         int opcion = JOptionPane.showConfirmDialog( 
                                        null, 
