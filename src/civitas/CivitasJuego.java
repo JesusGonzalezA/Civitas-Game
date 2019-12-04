@@ -15,7 +15,9 @@ import java.util.Iterator;
 public class CivitasJuego {
     
     //-------------------------------------------------------------
-
+    //Atributos de clase
+    private final static int INDICECASILLACARCEL= 3;
+    
     //Atributos de referencia
     private MazoSorpresas mazo;
     private Tablero tablero;
@@ -38,20 +40,36 @@ public class CivitasJuego {
         
         //Muestra también información cuando un jugador cae en bancarrota
             //Para recorrer ranking
-        int numJugadores = jugadores.size();
-        ArrayList<Jugador> ranking = ranking();
-        int i = 0;
-        int pos = 1;
-        int empatados = 1;
+        
         
         
         //Busco si hay alguien en bancarrota
         if (finalDelJuego()){
-            salida += "\nEl juego ha finalizado, ranking: \n";
+            salida += "\nEl juego ha finalizado.\n";
+            salida += getRanking();
+        }
+        
+        return (salida);
+        
+    }
+    
+    
+    //Sólo si es el final del juego
+    public String getRanking (){
+        String salida = "";
+        
+        if (finalDelJuego()){   //Dar seguridad por haberlo hecho public
             
+            //Declaracion de variables
+            int numJugadores = jugadores.size();
+            ArrayList<Jugador> ranking = ranking();
+            int i = 0;
+            int pos = 1;
+            int empatados = 1;
+            
+            salida += "\nRanking: \n";
             //Mostrar el ranking
             while(i<numJugadores){
-                
                 salida += "\t" + pos +"- "+ranking.get(i).getNombre()+ ", saldo: " + ranking.get(i).getSaldo()+"\n";
                 
                 if((i+1) <numJugadores ){
@@ -62,13 +80,11 @@ public class CivitasJuego {
                     else
                         empatados++;
                 }
-                
                 ++i;
             }  
         }
         
-        return (salida);
-        
+        return salida;
     }
     
     private void avanzaJugador(){   //p3
@@ -215,16 +231,15 @@ public class CivitasJuego {
     private void inicializaTablero (MazoSorpresas mazo){
         
         //Creo el tablero
-        final int INDICECASILLACARCEL= 1;
         tablero = new Tablero(INDICECASILLACARCEL);
         
         
 ////        //Añado casillas
-        tablero.añadeCasilla(new CasillaSorpresa(mazo,"Caja de Comunidad"));
-        tablero.añadeCasilla(new Casilla("Descanso"));
+        //tablero.añadeCasilla(new CasillaSorpresa(mazo,"Caja de Comunidad"));
+        //tablero.añadeCasilla(new Casilla("Descanso"));
         tablero.añadeCasilla(new CasillaCalle(new TituloPropiedad("Murcia",
                                         25.0f,50.0f,1000.0f,2000.0f,500.0f)));
-        tablero.añadeCasilla(new CasillaImpuesto("Impuesto por ser tan guapo", 1500.0f));
+       // tablero.añadeCasilla(new CasillaImpuesto("Impuesto por ser tan guapo", 1500.0f));
         tablero.añadeCasilla(new CasillaCalle(new TituloPropiedad("Paseo del Prado",
                                         50.0f,100.0f,2000.0f,4000.0f,1000.0f)));
         tablero.añadeJuez();
