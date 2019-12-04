@@ -71,6 +71,7 @@ public class CivitasView extends javax.swing.JFrame {
         jLabelJugadorActualTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
 
         titulo.setFont(new java.awt.Font("Laksaman", 1, 24)); // NOI18N
         titulo.setText("Civitas");
@@ -139,20 +140,17 @@ public class CivitasView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(contenedorVistaJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabelSigOpTitulo)
+                                .addGap(16, 16, 16)
+                                .addComponent(jTextFieldSiguienteOp, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(99, 99, 99)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelJugadorActualTitulo)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(20, 20, 20)
-                                        .addComponent(jLabelSigOpTitulo)
-                                        .addGap(16, 16, 16)
-                                        .addComponent(jTextFieldSiguienteOp, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(99, 99, 99)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(110, 110, 110)
-                                                .addComponent(jLabelRanking)))))
+                                        .addGap(110, 110, 110)
+                                        .addComponent(jLabelRanking)))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(0, 20, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -161,7 +159,9 @@ public class CivitasView extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addComponent(titulo))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(204, 204, 204)
+                        .addComponent(jLabelJugadorActualTitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanelCasillaActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
