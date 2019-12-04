@@ -179,7 +179,7 @@ public class TituloPropiedad {
         return (propietario!=null);
     }
     
-    public TituloPropiedad(String nom, Float ab, Float fr, Float hb, Float pc, 
+    TituloPropiedad(String nom, Float ab, Float fr, Float hb, Float pc, 
                 Float pe)
     {
         nombre = nom;
