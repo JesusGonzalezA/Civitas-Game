@@ -6,7 +6,10 @@
 package GUI;
 
 import civitas.CivitasJuego;
+import civitas.Jugador;
 import civitas.OperacionesJuego;
+import civitas.TituloPropiedad;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 //import DiarioDialog;
 //import Respuestas;
@@ -22,8 +25,9 @@ public class CivitasView extends javax.swing.JFrame {
     public CivitasView() {
         initComponents();
         
-        //Creo una instancia de diálogo de diario
+        //Creo una instancia de los jdialog
         DiarioDialog.createInstance(this);
+        GestionDialog.createInstance(this);
           
         //Ocultar ranking
         jTextAreaRanking.setVisible(false);
@@ -205,6 +209,9 @@ public class CivitasView extends javax.swing.JFrame {
         setVisible(true);
     }
     
+    //----------------------------------------------------
+    //Actualizar vista
+    //Jugador casilla ranking
     void actualizarVista (){
         jugadorPanel.setJugador(juego.getJugadorActual());
         actualizarCasilla();
@@ -232,19 +239,27 @@ public class CivitasView extends javax.swing.JFrame {
         jTextAreaCasillaActual.setText(juego.getCasillaActual().toString());
     }
    
+    //------------------------------------------------
+    //Siguiente OP
     void mostrarSiguienteOperacion(OperacionesJuego op){
         jTextFieldSiguienteOp.setText(op.name());
 //        actualizarVista();
     }
     
+    //-----------------------------------------------
+    //Diario
     void mostrarEventos(){
         DiarioDialog.getInstance().mostrarEventos();
     }
     
+    //-------------------------------------------------
+    //Pausa
     void pausaCambioTurno() {
         JOptionPane.showMessageDialog(this, "Paso de turno");
     }
     
+    //--------------------------------------------------
+    //Comprar
     Respuestas comprar(){
         int opcion = JOptionPane.showConfirmDialog( 
                                        null, 
@@ -257,6 +272,31 @@ public class CivitasView extends javax.swing.JFrame {
         return Respuestas.values()[opcion];
     }
     
+    
+    //--------------------------------------------------
+    //Gestion
+    int getGestion(){
+        return GestionDialog.getInstance().getGestion();
+    }
+    
+    int getPropiedad(){
+        return GestionDialog.getInstance().getPropiedad();
+    }
+   
+    private ArrayList<String> getPropiedadesString(Jugador jugador){
+        ArrayList<TituloPropiedad> p =jugador.getPropiedades();
+        ArrayList<String> pNombres = new ArrayList<>();
+        
+        for (TituloPropiedad t: p)
+            pNombres.add(t.getNombre());
+        
+        return pNombres;
+    }
+    
+    void gestionar(Jugador jugador){
+        ArrayList<String> pNombres = getPropiedadesString (jugador);
+        GestionDialog.getInstance().gestionar(pNombres);
+    }
     
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */

@@ -529,10 +529,6 @@ public class Jugador implements Comparable<Jugador>{
     }
    
     
-    public void bancarrota(){
-        this.saldo = -1;
-    }
-    
     //-------------------------------------------------------------
     
     public static void main (String args[]){
