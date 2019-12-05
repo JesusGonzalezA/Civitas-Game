@@ -41,10 +41,6 @@ public class JugadorEspeculador extends Jugador{
         return super.pagaImpuesto(cantidadEspeculador);
     }
     
-    @Override
-    public Boolean isEspeculador(){
-        return true;
-    }
     
     @Override
     public String toString(){

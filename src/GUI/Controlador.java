@@ -96,20 +96,20 @@ public class Controlador {
                         
                         break; //gestionar
                     
-//                    case SALIR_CARCEL:
-//                        SalidasCarcel tipoSalida;
-//                        tipoSalida = vista.salirCarcel();
-//                        
-//                        if (tipoSalida == SalidasCarcel.PAGANDO)
-//                            juego.salirCarcelPagando();
-//                            
-//                        else 
-//                            juego.salirCarcelTirando();
-//                        
-//                        
-//                        juego.siguientePasoCompletado(operacion);
-//                        
-//                        break;
+                    case SALIR_CARCEL:
+                        SalidasCarcel tipoSalida;
+                        tipoSalida = vista.salirCarcel();
+                        
+                        if (tipoSalida == SalidasCarcel.PAGANDO)
+                            juego.salirCarcelPagando();
+                            
+                        else 
+                            juego.salirCarcelTirando();
+                        
+                        
+                        juego.siguientePasoCompletado(operacion);
+                        
+                        break;
                 
                 } //realizando la operacion
                         

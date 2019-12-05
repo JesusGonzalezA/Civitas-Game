@@ -6,6 +6,7 @@
 package GUI;
 
 import civitas.Jugador;
+import civitas.JugadorEspeculador;
 import civitas.TituloPropiedad;
 import java.util.ArrayList;
 /**
@@ -81,6 +82,11 @@ class JugadorPanel extends javax.swing.JPanel {
 
         jTextFieldEspeculador.setText("Especulador");
         jTextFieldEspeculador.setEnabled(false);
+        jTextFieldEspeculador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldEspeculadorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -141,6 +147,10 @@ class JugadorPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNombreActionPerformed
 
+    private void jTextFieldEspeculadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEspeculadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldEspeculadorActionPerformed
+
 
     //Métodos
     void setJugador(Jugador jugador)
@@ -150,7 +160,8 @@ class JugadorPanel extends javax.swing.JPanel {
         //Editar campos
         String encarcelado,especulador;
         encarcelado= (jugador.isEncarcelado())? "SI" : "NO";
-        especulador= (jugador.isEspeculador())? "SI" : "NO";
+        especulador= (jugador instanceof JugadorEspeculador)? "SI" : "NO";
+        
         
         this.jTextFieldNombre.setText(jugador.getNombre());
         this.jTextFieldSaldo.setText(Float.toString(jugador.getSSaldo()));

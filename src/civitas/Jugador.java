@@ -234,10 +234,6 @@ public class Jugador implements Comparable<Jugador>{
         return saldo;
     }
     
-    public Boolean isEspeculador(){
-        return false;
-    }
-    
     public float getSSaldo(){
         float copia = saldo;
         return copia;

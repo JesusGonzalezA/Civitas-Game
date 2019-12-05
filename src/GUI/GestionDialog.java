@@ -25,6 +25,7 @@ public class GestionDialog extends javax.swing.JDialog {
         super(parent, true);
         initComponents();
         reiniciarOpciones();
+        setGestiones();
         
         //Relativo a interfaz
         this.setBounds(0,0,354, 360);
@@ -36,7 +37,7 @@ public class GestionDialog extends javax.swing.JDialog {
 
     private void reiniciarOpciones(){
         propiedadElegida = -1;
-        gestionElegida = -1;
+        gestionElegida = 5;
     }
     
     static void createInstance (java.awt.Frame parent) {
@@ -54,6 +55,7 @@ public class GestionDialog extends javax.swing.JDialog {
             "Vender","Hipotecar","Cancelar Hipoteca","Construir casa",
             "Construir hotel", "Terminar"));
         
+        posTerminar = opciones.indexOf("Terminar");
         opciones.forEach((s) -> {
             gestiones.addElement(s);
         });
@@ -79,7 +81,6 @@ public class GestionDialog extends javax.swing.JDialog {
         //Actualizo
         reiniciarOpciones();
         setPropiedades(propiedades);
-        setGestiones();
         
         //Interfaz
         this.setVisible(true);
@@ -233,6 +234,7 @@ public class GestionDialog extends javax.swing.JDialog {
 //    }
     
     //----------------------------------------------------------
+    private static int posTerminar = -1;
     private int propiedadElegida;
     private int gestionElegida;
     private static GestionDialog instancia = null;

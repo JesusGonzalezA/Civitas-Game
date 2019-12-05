@@ -8,8 +8,10 @@ package GUI;
 import civitas.CivitasJuego;
 import civitas.Jugador;
 import civitas.OperacionesJuego;
+import civitas.SalidasCarcel;
 import civitas.TituloPropiedad;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 //import DiarioDialog;
 //import Respuestas;
@@ -296,6 +298,24 @@ public class CivitasView extends javax.swing.JFrame {
     void gestionar(Jugador jugador){
         ArrayList<String> pNombres = getPropiedadesString (jugador);
         GestionDialog.getInstance().gestionar(pNombres);
+    }
+    
+    //--------------------------------------------------
+    //Salir de la cárcel
+    SalidasCarcel salirCarcel(){
+        String[] opciones = {"Pagando","Tirando"};
+        
+        int respuesta = JOptionPane.showOptionDialog(
+                                            null, 
+                                            "¿Cómo quieres salir de la cárcel?", 
+                                            "Salir de la cárcel", 
+                                            JOptionPane.DEFAULT_OPTION, 
+                                            JOptionPane.QUESTION_MESSAGE, 
+                                            null, 
+                                            opciones, 
+                                            opciones[0]);
+        
+        return SalidasCarcel.values()[respuesta];
     }
     
 //    public static void main(String args[]) {
