@@ -236,12 +236,12 @@ public class CivitasJuego {
         
 ////        //Añado casillas
         //tablero.añadeCasilla(new CasillaSorpresa(mazo,"Caja de Comunidad"));
-        tablero.añadeCasilla(new Casilla("Descanso"));
-        //tablero.añadeCasilla(new CasillaCalle(new TituloPropiedad("Murcia",
-            //                            25.0f,50.0f,1000.0f,2000.0f,500.0f)));
+        //tablero.añadeCasilla(new Casilla("Descanso"));
+        tablero.añadeCasilla(new CasillaCalle(new TituloPropiedad("Murcia",
+                                        25.0f,50.0f,1000.0f,2000.0f,500.0f)));
        // tablero.añadeCasilla(new CasillaImpuesto("Impuesto por ser tan guapo", 1500.0f));
-        //tablero.añadeCasilla(new CasillaCalle(new TituloPropiedad("Paseo del Prado",
-          //                              50.0f,100.0f,2000.0f,4000.0f,1000.0f)));
+        tablero.añadeCasilla(new CasillaCalle(new TituloPropiedad("Paseo del Prado",
+                                        50.0f,100.0f,2000.0f,4000.0f,1000.0f)));
         tablero.añadeJuez();
     }
     

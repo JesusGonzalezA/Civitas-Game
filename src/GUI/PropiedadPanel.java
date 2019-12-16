@@ -29,47 +29,62 @@ class PropiedadPanel extends javax.swing.JPanel {
 
         jTextFieldCasasYHoteles = new javax.swing.JTextField();
         jTextFieldHipotecada = new javax.swing.JTextField();
-        titulo = new javax.swing.JLabel();
         jLabelNombre = new javax.swing.JLabel();
         jLabelCasasYHoteles = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         jLabelHipotecada = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jTextFieldCasasYHoteles.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
         jTextFieldCasasYHoteles.setText("jTextField2");
         jTextFieldCasasYHoteles.setEnabled(false);
-        add(jTextFieldCasasYHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, 33));
 
         jTextFieldHipotecada.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
         jTextFieldHipotecada.setText("jTextField3");
         jTextFieldHipotecada.setEnabled(false);
-        add(jTextFieldHipotecada, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 119, -1, 31));
-
-        titulo.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
-        titulo.setText("Propiedad");
-        titulo.setEnabled(false);
-        add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabelNombre.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
         jLabelNombre.setText("Nombre");
-        jLabelNombre.setEnabled(false);
-        add(jLabelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 43, -1, -1));
 
+        jLabelCasasYHoteles.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
         jLabelCasasYHoteles.setText("Casas y Hoteles");
-        jLabelCasasYHoteles.setEnabled(false);
-        add(jLabelCasasYHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 87, -1, -1));
 
         jTextFieldNombre.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
-        jTextFieldNombre.setText("jTextField1");
+        jTextFieldNombre.setText("123451234512345");
         jTextFieldNombre.setEnabled(false);
-        add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 44, -1, 30));
 
         jLabelHipotecada.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
         jLabelHipotecada.setText("Hipotecada");
-        jLabelHipotecada.setEnabled(false);
-        add(jLabelHipotecada, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 119, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabelNombre)
+                .addGap(5, 5, 5)
+                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(jLabelCasasYHoteles)
+                .addGap(3, 3, 3)
+                .addComponent(jTextFieldCasasYHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelHipotecada)
+                .addGap(4, 4, 4)
+                .addComponent(jTextFieldHipotecada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelNombre)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldCasasYHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelHipotecada)
+                        .addComponent(jTextFieldHipotecada, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelCasasYHoteles)))
+                .addGap(8, 8, 8))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     //---------------------------------------------------------
@@ -96,6 +111,5 @@ class PropiedadPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldCasasYHoteles;
     private javax.swing.JTextField jTextFieldHipotecada;
     private javax.swing.JTextField jTextFieldNombre;
-    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
