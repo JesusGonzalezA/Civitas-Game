@@ -200,21 +200,25 @@ public class CivitasView extends javax.swing.JFrame {
     //Actualizar vista
     //Jugador casilla ranking
     void actualizarVista (){
+        
+        //Actualizo jugador
         Jugador actual = juego.getJugadorActual();
         
         contenedorVistaJugador.remove(jugadorPanel);
-        if (actual instanceof JugadorEspeculador){
-            jugadorPanel = new JugadorEspeculadorPanel();
-            ((JugadorEspeculadorPanel)jugadorPanel).setJugador((JugadorEspeculador)actual);
-        }
-        else{
+        if (actual instanceof Jugador){
             jugadorPanel = new JugadorPanel();
             ((JugadorPanel)jugadorPanel).setJugador(actual);
         }
+        else if (actual instanceof JugadorEspeculador){
+            jugadorPanel = new JugadorEspeculadorPanel();
+            ((JugadorEspeculadorPanel)jugadorPanel).setJugador((JugadorEspeculador)actual);
+        }
         contenedorVistaJugador.add(jugadorPanel);
         
+        //Actualizo casilla
         actualizarCasilla();
         
+        //Actualizo ranking
         if (juego.finalDelJuego()){
             mostrarRanking();
         }
