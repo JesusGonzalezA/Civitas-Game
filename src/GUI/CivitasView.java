@@ -205,13 +205,13 @@ public class CivitasView extends javax.swing.JFrame {
         Jugador actual = juego.getJugadorActual();
         
         contenedorVistaJugador.remove(jugadorPanel);
-        if (actual instanceof Jugador){
-            jugadorPanel = new JugadorPanel();
-            ((JugadorPanel)jugadorPanel).setJugador(actual);
-        }
-        else if (actual instanceof JugadorEspeculador){
+        if (actual instanceof JugadorEspeculador){
             jugadorPanel = new JugadorEspeculadorPanel();
             ((JugadorEspeculadorPanel)jugadorPanel).setJugador((JugadorEspeculador)actual);
+        }
+        else{
+            jugadorPanel = new JugadorPanel();
+            ((JugadorPanel)jugadorPanel).setJugador(actual);
         }
         contenedorVistaJugador.add(jugadorPanel);
         
