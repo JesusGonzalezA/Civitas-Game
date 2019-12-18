@@ -32,14 +32,14 @@ public class JugadorEspeculador extends Jugador{
         return fianza;
     }
     
-    @Override
-    protected int getHotelesMax(){
-        return super.getHotelesMax()*FactorEspeculador;
+    
+    protected static int getHotelesMax(){
+        return Jugador.getHotelesMax()*FactorEspeculador;
     }
     
-    @Override
-    protected int getCasasMax(){
-        return super.getCasasMax()*FactorEspeculador;
+    
+    protected static int getCasasMax(){
+        return Jugador.getCasasMax()*FactorEspeculador;
     }
 
     @Override

@@ -194,15 +194,15 @@ public class Jugador implements Comparable<Jugador>{
         return (propiedades.size()>ip)&&(ip>=0);
     }
     
-    protected int getCasasMax(){
+    protected static int getCasasMax(){
         return CasasMax;
     }
     
-    int getCasasPorHotel(){
+    static int getCasasPorHotel(){
         return CasasPorHotel;
     }
     
-    protected int getHotelesMax(){
+    protected static int getHotelesMax(){
         return HotelesMax;
     }
     
@@ -214,11 +214,11 @@ public class Jugador implements Comparable<Jugador>{
         return numCasillaActual;
     }
     
-    private float getPrecioLibertad(){
+    private static float getPrecioLibertad(){
         return PrecioLibertad;
     }
     
-    private float getPremioPasoPorSalida(){
+    private static float getPremioPasoPorSalida(){
         return PasoPorSalida;
     }
     
