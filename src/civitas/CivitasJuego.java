@@ -220,7 +220,7 @@ public class CivitasJuego {
         }
         
         mazo.alMazo(new SorpresaConvertir(200.0f));
-        mazo.alMazo(new SorpresaIrCasilla(tablero,posPaseoPrado,"Ir a Paseo del Prado"));
+        //mazo.alMazo(new SorpresaIrCasilla(tablero,posPaseoPrado,"Ir a Paseo del Prado"));
         mazo.alMazo(new SorpresaSalirCarcel(mazo));
         mazo.alMazo(new SorpresaIrCarcel(tablero));
         mazo.alMazo(new SorpresaPorCasaHotel("Paga por propiedades",-50));
@@ -235,13 +235,13 @@ public class CivitasJuego {
         
         
 ////        //Añado casillas
-        //tablero.añadeCasilla(new CasillaSorpresa(mazo,"Caja de Comunidad"));
-        //tablero.añadeCasilla(new Casilla("Descanso"));
-        tablero.añadeCasilla(new CasillaCalle(new TituloPropiedad("Murcia",
-                                        25.0f,50.0f,1000.0f,2000.0f,500.0f)));
+        tablero.añadeCasilla(new CasillaSorpresa(mazo,"Caja de Comunidad"));
+        tablero.añadeCasilla(new Casilla("Descanso"));
+        //tablero.añadeCasilla(new CasillaCalle(new TituloPropiedad("Murcia",
+        //                                25.0f,50.0f,1000.0f,2000.0f,500.0f)));
        // tablero.añadeCasilla(new CasillaImpuesto("Impuesto por ser tan guapo", 1500.0f));
-        tablero.añadeCasilla(new CasillaCalle(new TituloPropiedad("Paseo del Prado",
-                                        50.0f,100.0f,2000.0f,4000.0f,1000.0f)));
+        //tablero.añadeCasilla(new CasillaCalle(new TituloPropiedad("Paseo del Prado",
+          //                              50.0f,100.0f,2000.0f,4000.0f,1000.0f)));
         tablero.añadeJuez();
     }
     

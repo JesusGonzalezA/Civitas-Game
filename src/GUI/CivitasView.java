@@ -12,6 +12,8 @@ import civitas.SalidasCarcel;
 import civitas.TituloPropiedad;
 import java.util.ArrayList;
 import java.util.Arrays;
+import GUI.JugadorPanel;
+import civitas.JugadorEspeculador;
 import javax.swing.JOptionPane;
 //import DiarioDialog;
 //import Respuestas;
@@ -39,6 +41,7 @@ public class CivitasView extends javax.swing.JFrame {
         //Inicializar el panel de jugador
         jugadorPanel = new JugadorPanel();
         contenedorVistaJugador.add(jugadorPanel);
+        
         
         //Interfaz
         setVisible(true);
@@ -197,7 +200,19 @@ public class CivitasView extends javax.swing.JFrame {
     //Actualizar vista
     //Jugador casilla ranking
     void actualizarVista (){
-        jugadorPanel.setJugador(juego.getJugadorActual());
+        Jugador actual = juego.getJugadorActual();
+        
+        contenedorVistaJugador.remove(jugadorPanel);
+        if (actual instanceof JugadorEspeculador){
+            jugadorPanel = new JugadorEspeculadorPanel();
+            ((JugadorEspeculadorPanel)jugadorPanel).setJugador((JugadorEspeculador)actual);
+        }
+        else{
+            jugadorPanel = new JugadorPanel();
+            ((JugadorPanel)jugadorPanel).setJugador(actual);
+        }
+        contenedorVistaJugador.add(jugadorPanel);
+        
         actualizarCasilla();
         
         if (juego.finalDelJuego()){
@@ -287,7 +302,8 @@ public class CivitasView extends javax.swing.JFrame {
     SalidasCarcel salirCarcel(){
         String[] opciones = {"Pagando","Tirando"};
         
-        int respuesta = JOptionPane.showOptionDialog(
+        int respuesta = 1;
+        respuesta = JOptionPane.showOptionDialog(
                                             null, 
                                             "¿Cómo quieres salir de la cárcel?", 
                                             "Salir de la cárcel", 
@@ -333,7 +349,7 @@ public class CivitasView extends javax.swing.JFrame {
 //    }
 
     //--------------------------------------------------------------
-    private JugadorPanel jugadorPanel;
+    private javax.swing.JPanel jugadorPanel;
     private CivitasJuego juego;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contenedorVistaJugador;

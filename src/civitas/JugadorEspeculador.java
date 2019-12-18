@@ -24,6 +24,13 @@ public class JugadorEspeculador extends Jugador{
         this.fianza = fianza;
     }
     //------------------------------------
+    public static int getFactorEspeculador(){
+        return FactorEspeculador;
+    }
+    
+    public float getFianza(){
+        return fianza;
+    }
     
     @Override
     protected int getHotelesMax(){

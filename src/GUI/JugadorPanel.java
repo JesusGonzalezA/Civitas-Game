@@ -34,12 +34,10 @@ class JugadorPanel extends javax.swing.JPanel {
         jLabelNombre = new javax.swing.JLabel();
         jLabelSaldo = new javax.swing.JLabel();
         jLabelEncarcelado = new javax.swing.JLabel();
-        jLabelEspeculador = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldSaldo = new javax.swing.JTextField();
         jTextFieldEncarcelado = new javax.swing.JTextField();
         propiedades = new javax.swing.JPanel();
-        jTextFieldEspeculador = new javax.swing.JTextField();
         jLabelJugadorActualTitulo = new javax.swing.JLabel();
         jLabelPropiedades = new javax.swing.JLabel();
 
@@ -51,9 +49,6 @@ class JugadorPanel extends javax.swing.JPanel {
 
         jLabelEncarcelado.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
         jLabelEncarcelado.setText("Encarcelado");
-
-        jLabelEspeculador.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
-        jLabelEspeculador.setText("Especulador");
 
         jTextFieldNombre.setFont(new java.awt.Font("Laksaman", 0, 15)); // NOI18N
         jTextFieldNombre.setText("Nombre");
@@ -79,14 +74,6 @@ class JugadorPanel extends javax.swing.JPanel {
 
         propiedades.setEnabled(false);
 
-        jTextFieldEspeculador.setText("Especulador");
-        jTextFieldEspeculador.setEnabled(false);
-        jTextFieldEspeculador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldEspeculadorActionPerformed(evt);
-            }
-        });
-
         jLabelJugadorActualTitulo.setFont(new java.awt.Font("Laksaman", 1, 15)); // NOI18N
         jLabelJugadorActualTitulo.setText("Jugador Actual");
 
@@ -103,27 +90,21 @@ class JugadorPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelEncarcelado)
+                    .addComponent(jLabelSaldo)
+                    .addComponent(jLabelNombre))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelEspeculador)
-                        .addGap(27, 27, 27)
-                        .addComponent(jTextFieldEspeculador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelEncarcelado)
-                            .addComponent(jLabelSaldo)
-                            .addComponent(jLabelNombre))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(28, 28, 28))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jTextFieldEncarcelado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jTextFieldEncarcelado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 4, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelPropiedades)
@@ -150,11 +131,7 @@ class JugadorPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldEncarcelado, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelEncarcelado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelEspeculador)
-                    .addComponent(jTextFieldEspeculador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(91, 91, 91))
+                .addGap(137, 137, 137))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(78, Short.MAX_VALUE)
                 .addComponent(jLabelPropiedades)
@@ -172,10 +149,6 @@ class JugadorPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNombreActionPerformed
 
-    private void jTextFieldEspeculadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEspeculadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEspeculadorActionPerformed
-
 
     //Métodos
     void setJugador(Jugador jugador)
@@ -183,15 +156,12 @@ class JugadorPanel extends javax.swing.JPanel {
         this.jugador = jugador;
         
         //Editar campos
-        String encarcelado,especulador;
+        String encarcelado;
         encarcelado= (jugador.isEncarcelado())? "SI" : "NO";
-        especulador= (jugador instanceof JugadorEspeculador)? "SI" : "NO";
-        
         
         this.jTextFieldNombre.setText(jugador.getNombre());
         this.jTextFieldSaldo.setText(Float.toString(jugador.getSSaldo()));
         this.jTextFieldEncarcelado.setText(encarcelado);
-        this.jTextFieldEspeculador.setText(especulador);
         
         rellenaPropiedades(jugador.getPropiedades());
     }
@@ -221,13 +191,11 @@ class JugadorPanel extends javax.swing.JPanel {
     private Jugador jugador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelEncarcelado;
-    private javax.swing.JLabel jLabelEspeculador;
-    private javax.swing.JLabel jLabelJugadorActualTitulo;
+    javax.swing.JLabel jLabelJugadorActualTitulo;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelPropiedades;
     private javax.swing.JLabel jLabelSaldo;
     private javax.swing.JTextField jTextFieldEncarcelado;
-    private javax.swing.JTextField jTextFieldEspeculador;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldSaldo;
     private javax.swing.JPanel propiedades;
